@@ -2,7 +2,7 @@
   <div
     class="bg-slate-500 min-h-[50px] flex items-center justify-between relative"
   >
-    <p class="mx-8">Podium Pulse</p>
+    <p class="mx-8"><nuxt-link to="/">Podium Pulse</nuxt-link></p>
     <div class="flex items-center e">
       <button class="mx-8" @mouseenter="setShowSeasons">Seasons</button>
       <button class="mx-8" @mouseenter="setShowDrivers">Drivers</button>

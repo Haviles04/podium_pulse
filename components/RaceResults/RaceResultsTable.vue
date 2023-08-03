@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-lg m-auto text-center mt-10 rounded-lg">
+  <div class="max-w-screen-lg m-auto text-center my-10 rounded-lg">
     <nuxt-link :to="circuit.url" target="_blank"
       ><h2 class="text-xl">{{ circuit.circuitName }}</h2>
       <p class="mb-8">{{ circuit.Location.country }}</p></nuxt-link
@@ -8,7 +8,7 @@
       class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
     >
       <table
-        class="min-w-[600px] table-auto border-collapse rounded w-full text-center divide-y"
+        class="min-w-[600px] table-auto border-collapse rounded w-full text-left divide-y"
       >
         <thead>
           <tr>
