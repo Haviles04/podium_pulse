@@ -10,5 +10,5 @@
 const { data } = await useFetch(
   "http://ergast.com/api/f1/current/last/results.json"
 );
-const lastRace = data._rawValue.MRData.RaceTable;
+const lastRace = data.value.MRData.RaceTable;
 </script>
