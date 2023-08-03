@@ -5,8 +5,10 @@
     {{ driver.number }}
   </td>
   <td :class="hasFastestLap">
-    {{ driver.Driver.givenName + " " + driver.Driver.familyName
-    }}<img
+    <NuxtLink :to="`/drivers/${driver.Driver.driverId}`">
+      {{ driver.Driver.givenName + " " + driver.Driver.familyName }}
+    </NuxtLink>
+    <img
       class="inline ml-2"
       :src="`https://flagsapi.com/${countryCode}/flat/24.png`"
     />
