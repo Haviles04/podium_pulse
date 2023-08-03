@@ -3,12 +3,12 @@
     <h1 class="text-5xl text-primary">Podium Pulse</h1>
     <p class="text-xl">Fueling Your F1 Passion!</p>
   </div>
-  <race-results-table :results="raceTable" />
+  <race-results-table :results="lastRace" />
 </template>
 
 <script setup>
 const { data } = await useFetch(
   "http://ergast.com/api/f1/current/last/results.json"
 );
-const raceTable = data._rawValue.MRData.RaceTable;
+const lastRace = data._rawValue.MRData.RaceTable;
 </script>
