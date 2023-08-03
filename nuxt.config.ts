@@ -1,9 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ["@nuxtjs/tailwindcss"],
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-  }
-
-})
+    cssPath: "~/assets/css/tailwind.css",
+  },
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false,
+    },
+  ],
+});
