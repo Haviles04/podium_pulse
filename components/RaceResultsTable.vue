@@ -1,11 +1,13 @@
 <template>
-  <div class="max-w-screen-lg m-auto text-center mt-10 rounded-lg scroll-auto">
+  <div class="max-w-screen-lg m-auto text-center mt-10 rounded-lg">
     <nuxt-link :to="circuit.url" target="_blank"
       ><h2 class="text-xl mb-8">{{ circuit.circuitName }}</h2></nuxt-link
     >
-    <div class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50">
+    <div
+      class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
+    >
       <table
-        class="table-auto border-collapse rounded w-full text-center overflow-scroll divide-y"
+        class="min-w-[600px] table-auto border-collapse rounded w-full text-center divide-y"
       >
         <thead>
           <tr>
