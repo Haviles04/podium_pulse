@@ -1,7 +1,8 @@
 <template>
   <div class="max-w-screen-lg m-auto text-center mt-10 rounded-lg">
     <nuxt-link :to="circuit.url" target="_blank"
-      ><h2 class="text-xl mb-8">{{ circuit.circuitName }}</h2></nuxt-link
+      ><h2 class="text-xl">{{ circuit.circuitName }}</h2>
+      <p class="mb-8">{{ circuit.Location.country }}</p></nuxt-link
     >
     <div
       class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
