@@ -32,5 +32,5 @@
 
 <script setup>
 const { results } = defineProps(["results"]);
-const { Circuit: circuit, Results: raceResults } = results.Races[0];
+const [{ Circuit: circuit, Results: raceResults }] = results.Races;
 </script>
