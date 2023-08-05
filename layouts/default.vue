@@ -2,32 +2,23 @@
   <div
     class="bg-slate-500 min-h-[50px] flex items-center justify-between relative"
   >
-    <p class="mx-8"><nuxt-link to="/">Podium Pulse</nuxt-link></p>
-    <div class="flex items-center e">
-      <button class="mx-8" @mouseenter="setShowSeasons">Seasons</button>
-      <button class="mx-8" @mouseenter="setShowDrivers">Drivers</button>
+    <p class="mx-6"><nuxt-link to="/">Podium Pulse</nuxt-link></p>
+    <div class="flex items-center">
+      <button class="mx-8" @mouseenter="listTypes = 'seasons'">Seasons</button>
+      <button class="mx-8" @mouseenter="listTypes = 'drivers'">Drivers</button>
       <div
-        v-if="showSeasons"
+        v-if="showList"
         class="absolute top-10 right-6 bg-slate-500 px-8 py-2 rounded-xl min-w-[200px] text-center"
-        @mouseleave="showSeasons = false"
+        @mouseleave="listTypes = ''"
       >
         <ul>
-          <li v-for="season in seasons" class="list-none">
-            <nuxt-link :to="`/seasons/${season.season}`">
-              {{ season.season }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </div>
-      <div
-        v-if="showDrivers"
-        class="absolute top-10 right-6 bg-slate-500 px-8 py-2 rounded-xl min-w-[200px] text-center"
-        @mouseleave="showDrivers = false"
-      >
-        <ul>
-          <li v-for="driver in drivers" class="list-none">
-            <nuxt-link :to="`/drivers/${driver.driverId}`">
-              {{ driver.givenName + " " + driver.familyName }}
+          <li
+            v-for="data in listData"
+            class="list-none"
+            @click="listTypes = ''"
+          >
+            <nuxt-link :to="listLink(data)">
+              {{ data.season || data.givenName + " " + data?.familyName }}
             </nuxt-link>
           </li>
         </ul>
@@ -38,25 +29,30 @@
 </template>
 
 <script setup>
-const showSeasons = ref(false);
-const showDrivers = ref(false);
+const listTypes = ref("");
 
-const setShowSeasons = () => {
-  showSeasons.value = true;
-  showDrivers.value = false;
-};
-const setShowDrivers = () => {
-  showSeasons.value = false;
-  showDrivers.value = true;
+const showList = computed(() => {
+  return listTypes.value === "drivers" || listTypes.value === "seasons";
+});
+
+const listData = computed(() => {
+  return listTypes.value === "seasons" ? seasons : drivers;
+});
+
+const listLink = (data) => {
+  if (listTypes.value === "seasons") {
+    return `/seasons/${data?.season}`;
+  }
+  return `/drivers/${data?.driverId}`;
 };
 
-//Season data
+//Get Season data
 const { data: seasonData } = await useFetch(
   "http://ergast.com/api/f1/seasons.json?offset=64"
 );
 const { Seasons: seasons } = seasonData.value.MRData.SeasonTable;
 
-//Driver data
+//Get Driver data
 const { data: driverData } = await useFetch(
   "https://ergast.com/api/f1/current/drivers.json"
 );
