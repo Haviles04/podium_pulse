@@ -1,9 +1,14 @@
 <template>
   <div class="text-center">
-    <p>{{ driver.givenName + " " + driver.familyName }}</p>
-    <p>{{ driver.dateOfBirth }}</p>
-    <p>{{ driver.permanentNumber }}</p>
-    <p>{{ driver.nationality }}</p>
+    <h2 class="text-6xl font-racing my-6">Driver Profile</h2>
+    <p class="text-2xl">{{ driver.givenName + " " + driver.familyName }}</p>
+    <img
+      class="inline ml-2"
+      :src="`https://flagsapi.com/${countryCode}/flat/48.png`"
+    />
+    <p>Nationality: {{ driver.nationality }}</p>
+    <p>DOB: {{ driver.dateOfBirth }}</p>
+    <p>Number: {{ driver.permanentNumber }}</p>
   </div>
 </template>
 
@@ -13,7 +18,10 @@ const { driverId } = useRoute().params;
 const { data: driverData } = await useFetch(
   `http://ergast.com/api/f1/drivers/${driverId}.json`
 );
-
 const [driver] = driverData.value.MRData.DriverTable.Drivers;
-console.log(driver);
+const countryCode = getCountryCode(driver.nationality);
+
+const currentYear = new Date().getFullYear();
+
+console.log(currentYear);
 </script>

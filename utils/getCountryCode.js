@@ -34,7 +34,7 @@ export const getCountryCode = (nationality) => {
       return "TH";
       break;
     case "Danish":
-      return "TH";
+      return "DK";
       break;
     case "Australian":
       return "AU";
