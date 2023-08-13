@@ -15,13 +15,19 @@
 <script setup>
 const { driverId } = useRoute().params;
 
-const { data: driverData } = await useFetch(
+const { data: driverData, error } = await useFetch(
   `http://ergast.com/api/f1/drivers/${driverId}.json`
 );
+
+if (error.value || !driverData.value) {
+  throw createError({
+    statusCode: error.value.statusCode,
+    statusMessage: error.value.message,
+    fatal: true,
+  });
+}
+
 const [driver] = driverData.value.MRData.DriverTable.Drivers;
 const countryCode = getCountryCode(driver.nationality);
-
 const currentYear = new Date().getFullYear();
-
-console.log(currentYear);
 </script>
