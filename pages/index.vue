@@ -1,6 +1,6 @@
 <template>
   <div
-    class="hero flex justify-center items-center flex-col pt-20 font-racing italic h-screen]"
+    class="bg-[url('/f1.jpg')] bg-no-repeat bg-center bg-fixed flex justify-center items-center flex-col pt-20 font-racing italic h-screen"
   >
     <h1 class="text-8xl text-primary bg-slate-500 rounded-xl p-4">
       Podium Pulse
@@ -22,6 +22,6 @@ const lastRace = data.value.MRData.RaceTable;
 
 <style scoped>
 .hero {
-  background: url("/public/f1.jpg") no-repeat center fixed;
+  background: url("/f1.jpg") no-repeat center fixed;
 }
 </style>

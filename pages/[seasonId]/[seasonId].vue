@@ -1,6 +1,11 @@
 <template>
-  <section>
-    {{ seasonId }}
+  <section class="text-center">
+    <h1 class="text-4xl mt-10">{{ seasonId }}</h1>
+    <div  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 m-10">
+
+      <SeasonCard v-for="race in seasonRaces" :race="race"/>
+
+  </div>
   </section>
 </template>
 
@@ -19,6 +24,5 @@ if (error.value || !seasonData.value) {
   });
 }
 
-const seasons = seasonData.value.MRData.RaceTable;
-console.log(seasonData.value.MRData);
+const seasonRaces = seasonData.value.MRData.RaceTable.Races;
 </script>

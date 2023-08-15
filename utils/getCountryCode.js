@@ -45,5 +45,23 @@ export const getCountryCode = (nationality) => {
     case "Finnish":
       return "FI";
       break;
+    case "Brazilian":
+      return "BR";
+      break;
+    case "Belgian":
+      return "BE";
+      break;
+    case "New Zealander":
+      return "NZ";
+      break;
+    case "Swedish":
+      return "CH";
+      break;
+    case "Russian":
+      return "RU";
+      break;
+    case "Indonesian":
+      return "ID";
+      break;
   }
 };
