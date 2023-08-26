@@ -26,6 +26,8 @@ const sessionInfo = computed(() => {
   return sessionType.value === "Race" ? raceInfo : qualiInfo;
 });
 
+console.log(sessionType.value);
+
 const qualiInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
 );
@@ -33,6 +35,4 @@ const qualiInfo = await fetchSessionInfo(
 const raceInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`
 );
-
-console.log(sessionInfo.value);
 </script>
