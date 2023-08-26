@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody class="divide-y">
-          <tr v-for="driver in raceResults">
+          <tr v-for="driver in data">
             <driver-table-row :driver="driver" />
           </tr>
         </tbody>
@@ -32,5 +32,6 @@
 
 <script setup>
 const { results } = defineProps(["results"]);
-const [{ Circuit: circuit, Results: raceResults }] = results.Races;
+const [{ Circuit: circuit, Results, QualifyingResults }] = results.Races;
+const data = Results ?? QualifyingResults;
 </script>

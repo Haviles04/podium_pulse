@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[url('/f1.jpg')] bg-no-repeat bg-center bg-fixed flex justify-center items-center flex-col pt-20 font-racing italic h-screen"
+    class="bg-[url('/f1.jpg')] bg-no-repeat bg-center bg-fixed flex justify-center items-center flex-col pt-20 font-racing italic h-screen text-center"
   >
     <h1 class="text-8xl text-primary bg-slate-500 rounded-xl p-4">
       Podium Pulse
