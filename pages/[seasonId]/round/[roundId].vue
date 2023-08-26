@@ -1,9 +1,9 @@
 <template>
   <section>
     <div class="text-center pt-8 [&>*]:p-4 [&>h2]:text-2xl [&>h3]:text-xl">
-      <h1 class="text-4xl font-racing">{{ sessionInfo.raceName }}</h1>
+      <h1 class="text-4xl font-racing">{{ raceInfo.raceName }}</h1>
       <h2 class="text-2xl font-racing">
-        {{ sessionInfo.Circuit.circuitName }}
+        {{ raceInfo.Circuit.circuitName }}
       </h2>
 
       <select class="text-center text-black" v-model="sessionType">
@@ -13,7 +13,11 @@
       </select>
 
       <h3>{{ sessionType }}</h3>
-      <RaceResultsTable :results="sessionInfo" />
+      <RaceResultsTable
+        v-show="sessionType === 'Qualifying'"
+        :results="qualiInfo"
+      />
+      <RaceResultsTable v-show="sessionType === 'Race'" :results="raceInfo" />
     </div>
   </section>
 </template>
@@ -21,10 +25,6 @@
 <script setup>
 const { seasonId, roundId } = useRoute().params;
 const sessionType = ref("Race");
-
-const sessionInfo = computed(() => {
-  return sessionType.value === "Race" ? raceInfo : qualiInfo;
-});
 
 const qualiInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
