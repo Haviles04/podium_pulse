@@ -14,10 +14,9 @@
 </template>
 
 <script setup>
-const { data } = await useFetch(
+const lastRace = await fetchSessionInfo(
   "http://ergast.com/api/f1/current/last/results.json"
 );
-const lastRace = data.value.MRData.RaceTable;
 </script>
 
 <style scoped>

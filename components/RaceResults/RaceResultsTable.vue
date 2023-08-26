@@ -1,9 +1,5 @@
 <template>
   <div class="max-w-screen-lg m-auto text-center my-10 rounded-lg">
-    <nuxt-link :to="circuit.url" target="_blank"
-      ><h2 class="text-xl">{{ circuit.circuitName }}</h2>
-      <p class="mb-8">{{ circuit.Location.country }}</p></nuxt-link
-    >
     <div
       class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
     >
@@ -22,7 +18,7 @@
         </thead>
         <tbody class="divide-y">
           <tr v-for="driver in data">
-            <driver-table-row :driver="driver" />
+            <driver-table-row :driver="driver" :sessionType="sessionType" />
           </tr>
         </tbody>
       </table>
@@ -32,6 +28,7 @@
 
 <script setup>
 const { results } = defineProps(["results"]);
-const [{ Circuit: circuit, Results, QualifyingResults }] = results.Races;
+const { Results, QualifyingResults } = results;
+const sessionType = QualifyingResults ? "quali" : "race";
 const data = Results ?? QualifyingResults;
 </script>

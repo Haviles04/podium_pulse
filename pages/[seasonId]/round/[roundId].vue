@@ -1,48 +1,30 @@
 <template>
   <section>
-    <div class="text-center p-10 [&>*]:p-4 [&>h2]:underline [&>h2]:text-2xl">
+    <div class="text-center p-10 [&>*]:p-4 [&>h2]:text-2xl [&>h3]:text-xl">
       <h1 class="text-4xl">{{ roundInfo.raceName }}</h1>
-      <h2>Qualifying</h2>
-      <p>{{ roundInfo.Qualifying.date }}</p>
-      <RaceResultsTable
-        v-if="qualiInfo"
-        :results="qualiInfo.QualifyingResults"
-      />
-      <h2>Race</h2>
+      <h2 class="text-2xl">{{ roundInfo.Circuit.circuitName }}</h2>
+      <h3>Qualifying</h3>
+      <p>{{ roundInfo.Qualifying?.date }}</p>
+      <RaceResultsTable v-if="qualiInfo" :results="qualiInfo" />
+      <h3>Race</h3>
       <p>{{ roundInfo.date }}</p>
     </div>
-    <!-- <RaceResultsTable v-if="raceResults" :results="raceResults" /> -->
+    <RaceResultsTable v-if="raceInfo" :results="raceInfo" />
   </section>
 </template>
 
 <script setup>
 const { seasonId, roundId } = useRoute().params;
 
-const { data: roundData, error: roundError } = await useFetch(
+const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
 
-if (roundError.value || !roundData.value) {
-  throw createError({
-    statusCode: error.value.statusCode,
-    statusMessage: error.value.message,
-    fatal: true,
-  });
-}
-const [roundInfo] = roundData.value.MRData.RaceTable.Races;
-
-const { data: qualiData, error: qualiError } = await useFetch(
+const qualiInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
 );
 
-if (qualiError.value || !qualiData.value) {
-  throw createError({
-    statusCode: error.value.statusCode,
-    statusMessage: error.value.message,
-    fatal: true,
-  });
-}
-
-const [qualiInfo] = qualiData.value.MRData.RaceTable.Races;
-console.log(qualiInfo);
+const raceInfo = await fetchSessionInfo(
+  `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`
+);
 </script>

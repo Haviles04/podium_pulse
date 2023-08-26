@@ -13,9 +13,9 @@
 <script setup>
 const { race } = defineProps(["race"]);
 
-const futureRace = Date.now() < Date.parse(race.FirstPractice.date);
+const futureRace = Date.now() < Date.parse(race.FirstPractice?.date);
 const currentWeekend =
-  Date.now() > Date.parse(race.FirstPractice.date) &&
+  Date.now() > Date.parse(race.FirstPractice?.date) &&
   Date.parse(race.date) > Date.now();
 const borderColor = currentWeekend ? "border-purple-500" : "border-slate-500";
 </script>
