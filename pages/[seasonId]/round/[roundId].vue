@@ -58,19 +58,9 @@ const errorMessage = computed(() => {
   return qualiError.value || raceError.value ? "Error loading data" : null;
 });
 
-const { data: roundData, error: roundError } = await useFetch(
-  `http://ergast.com/api/f1/${seasonId}/${roundId}.json`,
-  {
-    onResponseError() {
-      throw createError({
-        statusCode: roundError.value.statusCode,
-        statusMessage: roundError.value.message,
-        fatal: true,
-      });
-    },
-  }
+const roundInfo = await fetchSessionInfo(
+  `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
-const [roundInfo] = roundData.value.MRData.RaceTable.Races;
 
 const { data: qualiData, error: qualiError } = await useFetch(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
