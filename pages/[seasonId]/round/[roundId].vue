@@ -39,6 +39,7 @@
       <RaceResultsTable
         :results="sessionInfo"
         :key="roundInfo.raceName + sessionType"
+        :errorMessage="errorMessage"
       />
     </div>
   </section>
@@ -49,18 +50,35 @@ const { seasonId, roundId } = useRoute().params;
 const sessionType = ref("Race");
 
 const sessionInfo = computed(() => {
-  return sessionType.value === "Race" ? raceInfo : qualiInfo || null;
+  if (raceInfo && sessionType.value === "Race") return raceInfo;
+  if (qualiInfo && sessionType.value === "Qualifying") return qualiInfo;
 });
 
-const roundInfo = await fetchSessionInfo(
-  `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
-);
+const errorMessage = computed(() => {
+  return qualiError.value || raceError.value ? "Error loading data" : null;
+});
 
-const qualiInfo = await fetchSessionInfo(
+const { data: roundData, error: roundError } = await useFetch(
+  `http://ergast.com/api/f1/${seasonId}/${roundId}.json`,
+  {
+    onResponseError() {
+      throw createError({
+        statusCode: roundError.value.statusCode,
+        statusMessage: roundError.value.message,
+        fatal: true,
+      });
+    },
+  }
+);
+const [roundInfo] = roundData.value.MRData.RaceTable.Races;
+
+const { data: qualiData, error: qualiError } = await useFetch(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
 );
+const [qualiInfo] = qualiData.value.MRData.RaceTable.Races;
 
-const raceInfo = await fetchSessionInfo(
+const { data: raceData, error: raceError } = await useFetch(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`
 );
+const [raceInfo] = raceData.value.MRData.RaceTable.Races;
 </script>
