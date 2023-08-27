@@ -14,7 +14,6 @@
 
 <script setup>
 const { driverId } = useRoute().params;
-
 const { data: driverData, error } = await useFetch(
   `http://ergast.com/api/f1/drivers/${driverId}.json`
 );
