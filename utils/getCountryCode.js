@@ -63,5 +63,8 @@ export const getCountryCode = (nationality) => {
     case "Indonesian":
       return "ID";
       break;
+    case "Venezuelan":
+      return "VE";
+      break;
   }
 };
