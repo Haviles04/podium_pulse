@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-lg m-auto text-center my-10 rounded-lg">
+  <div class="max-w-screen-lg m-auto text-center rounded-lg">
     <div
       class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
     >
