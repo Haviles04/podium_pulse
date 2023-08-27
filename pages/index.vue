@@ -10,6 +10,9 @@
   <h2 class="text-7xl text-center text-bold italic font-racing mt-10">
     Last Race
   </h2>
+  <h3 class="text-4xl text-center text-bold italic font-racing m-10">
+    {{ lastRace.raceName }}
+  </h3>
   <race-results-table :results="lastRace" />
 </template>
 
