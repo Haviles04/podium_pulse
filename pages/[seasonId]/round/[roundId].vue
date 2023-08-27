@@ -16,7 +16,7 @@
         />
         <label
           for="race"
-          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/race:bg-white peer-checked/race:text-slate-500 cursor-pointer"
+          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/race:bg-white peer-checked/race:text-slate-500 peer-checked/race:shadow-inner peer-checked/race:shadow-slate-500 cursor-pointer"
         >
           Race
         </label>
@@ -30,7 +30,7 @@
         />
         <label
           for="quali"
-          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/quali:bg-white peer-checked/quali:text-slate-500 cursor-pointer"
+          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/quali:bg-white peer-checked/quali:text-slate-500 peer-checked/quali:shadow-inner peer-checked/quali:shadow-slate-500 cursor-pointer"
         >
           Qualifying</label
         >
