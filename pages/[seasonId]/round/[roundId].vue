@@ -14,10 +14,9 @@
 
       <h3>{{ sessionType }}</h3>
       <RaceResultsTable
-        v-show="sessionType === 'Qualifying'"
-        :results="qualiInfo"
+        :results="sessionInfo"
+        :key="sessionInfo.raceName + sessionType"
       />
-      <RaceResultsTable v-show="sessionType === 'Race'" :results="raceInfo" />
     </div>
   </section>
 </template>
@@ -26,6 +25,10 @@
 const { seasonId, roundId } = useRoute().params;
 const sessionType = ref("Race");
 
+const sessionInfo = computed(() => {
+  return sessionType.value === "Race" ? raceInfo : qualiInfo || null;
+});
+
 const qualiInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
 );
@@ -33,4 +36,6 @@ const qualiInfo = await fetchSessionInfo(
 const raceInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`
 );
+
+console.log(sessionInfo.value);
 </script>
