@@ -38,6 +38,7 @@
 
       <RaceResultsTable
         :results="sessionInfo"
+        :sessionType="sessionType"
         :key="roundInfo.raceName + sessionType"
       />
     </div>
@@ -58,7 +59,7 @@ const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
 
-await useFetch(
+const fetchQualiResults = useFetch(
   `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`,
   {
     onResponse({ request, response }) {
@@ -67,9 +68,14 @@ await useFetch(
   }
 );
 
-await useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`, {
-  onResponse({ request, response }) {
-    raceInfo = response._data.MRData.RaceTable.Races[0];
-  },
-});
+const fetchRaceResults = useFetch(
+  `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`,
+  {
+    onResponse({ request, response }) {
+      raceInfo = response._data.MRData.RaceTable.Races[0];
+    },
+  }
+);
+
+await Promise.all([fetchQualiResults, fetchRaceResults]);
 </script>

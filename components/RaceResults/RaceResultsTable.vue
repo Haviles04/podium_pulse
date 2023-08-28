@@ -19,7 +19,11 @@
 
         <tbody class="divide-y">
           <tr v-for="driver in data">
-            <driver-table-row :driver="driver" :sessionType="sessionType" />
+            <driver-table-row
+              :key="driver?.number"
+              :driver="driver"
+              :sessionType="sessionType"
+            />
           </tr>
         </tbody>
       </table>
@@ -28,8 +32,7 @@
 </template>
 
 <script setup>
-const { results } = defineProps(["results"]);
+const { results, sessionType } = defineProps(["results", "sessionType"]);
 const { Results, QualifyingResults } = results || {};
-const sessionType = QualifyingResults ? "quali" : "race";
 const data = sessionType === "race" ? Results : QualifyingResults;
 </script>
