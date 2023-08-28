@@ -11,7 +11,7 @@
           class="hidden peer/race"
           type="radio"
           id="race"
-          value="Race"
+          value="race"
           v-model="sessionType"
         />
         <label
@@ -25,7 +25,7 @@
           class="hidden peer/quali"
           type="radio"
           id="quali"
-          value="Qualifying"
+          value="quali"
           v-model="sessionType"
         />
         <label
@@ -39,7 +39,6 @@
       <RaceResultsTable
         :results="sessionInfo"
         :key="roundInfo.raceName + sessionType"
-        :errorMessage="errorMessage"
       />
     </div>
   </section>
@@ -47,28 +46,30 @@
 
 <script setup>
 const { seasonId, roundId } = useRoute().params;
-const sessionType = ref("Race");
+const sessionType = ref("race");
+let qualiInfo;
+let raceInfo;
 
 const sessionInfo = computed(() => {
-  if (raceInfo && sessionType.value === "Race") return raceInfo;
-  if (qualiInfo && sessionType.value === "Qualifying") return qualiInfo;
-});
-
-const errorMessage = computed(() => {
-  return qualiError.value || raceError.value ? "Error loading data" : null;
+  return sessionType.value === "race" ? raceInfo : qualiInfo;
 });
 
 const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
 
-const { data: qualiData, error: qualiError } = await useFetch(
-  `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`
+await useFetch(
+  `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`,
+  {
+    onResponse({ request, response }) {
+      qualiInfo = response._data.MRData.RaceTable.Races[0];
+    },
+  }
 );
-const [qualiInfo] = qualiData.value.MRData.RaceTable.Races;
 
-const { data: raceData, error: raceError } = await useFetch(
-  `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`
-);
-const [raceInfo] = raceData.value.MRData.RaceTable.Races;
+await useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`, {
+  onResponse({ request, response }) {
+    raceInfo = response._data.MRData.RaceTable.Races[0];
+  },
+});
 </script>

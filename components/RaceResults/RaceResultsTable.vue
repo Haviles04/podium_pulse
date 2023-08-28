@@ -18,15 +18,7 @@
         </thead>
 
         <tbody class="divide-y">
-          <tr v-if="errorMessage">
-            {{
-              errorMessage
-            }}
-          </tr>
-          <tr v-else-if="!data">
-            No results yet
-          </tr>
-          <tr v-else v-for="driver in data">
+          <tr v-for="driver in data">
             <driver-table-row :driver="driver" :sessionType="sessionType" />
           </tr>
         </tbody>
@@ -36,7 +28,7 @@
 </template>
 
 <script setup>
-const { results, errorMessage } = defineProps(["results", "errorMessage"]);
+const { results } = defineProps(["results"]);
 const { Results, QualifyingResults } = results || {};
 const sessionType = QualifyingResults ? "quali" : "race";
 const data = sessionType === "race" ? Results : QualifyingResults;
