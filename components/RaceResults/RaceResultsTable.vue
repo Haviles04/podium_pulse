@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-lg m-auto text-center rounded-lg">
+  <div class="max-w-screen-lg m-auto text-center rounded-lg pb-10">
     <div
       class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
     >
@@ -18,6 +18,9 @@
         </thead>
 
         <tbody class="divide-y">
+          <tr v-if="errors?.includes(sessionType)">
+            <td colspan="6" class="text-center py-10">Error Loading Data.</td>
+          </tr>
           <tr v-for="driver in data">
             <driver-table-row
               :key="driver?.number"
@@ -32,7 +35,11 @@
 </template>
 
 <script setup>
-const { results, sessionType } = defineProps(["results", "sessionType"]);
+const { results, sessionType, errors } = defineProps([
+  "results",
+  "sessionType",
+  "errors",
+]);
 const { Results, QualifyingResults } = results || {};
-const data = sessionType === "race" ? Results : QualifyingResults;
+const data = sessionType === "quali" ? QualifyingResults : Results;
 </script>

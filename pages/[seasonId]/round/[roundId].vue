@@ -40,6 +40,7 @@
         :results="sessionInfo"
         :sessionType="sessionType"
         :key="roundInfo.raceName + sessionType"
+        :errors="errors"
       />
     </div>
   </section>
@@ -48,25 +49,27 @@
 <script setup>
 const { seasonId, roundId } = useRoute().params;
 const sessionType = ref("race");
-let qualiInfo;
-let raceInfo;
+const errors = [];
 
 const sessionInfo = computed(() => {
-  return sessionType.value === "race" ? raceInfo : qualiInfo;
+  return sessionType.value === "race"
+    ? raceData.value?.MRData.RaceTable.Races[0]
+    : qualiData.value?.MRData.RaceTable.Races[0];
 });
 
 const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
 
-const [{ data: qualiData }, { data: raceData }] = await Promise.all([
+const [
+  { data: qualiData, error: qualiError },
+  { data: raceData, error: raceError },
+] = await Promise.all([
   useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`),
   useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`),
 ]);
-if (qualiData.value) {
-  qualiInfo = qualiData.value.MRData.RaceTable.Races[0];
-}
-if (raceData.value) {
-  raceInfo = raceData.value.MRData.RaceTable.Races[0];
+if (qualiError.value || raceError.value) {
+  if (qualiError.value) errors.push("quali");
+  if (raceError.value) errors.push("race");
 }
 </script>
