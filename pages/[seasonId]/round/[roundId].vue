@@ -59,23 +59,14 @@ const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
 
-const fetchQualiResults = useFetch(
-  `http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`,
-  {
-    onResponse({ request, response }) {
-      qualiInfo = response._data.MRData.RaceTable.Races[0];
-    },
-  }
-);
-
-const fetchRaceResults = useFetch(
-  `http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`,
-  {
-    onResponse({ request, response }) {
-      raceInfo = response._data.MRData.RaceTable.Races[0];
-    },
-  }
-);
-
-await Promise.all([fetchQualiResults, fetchRaceResults]);
+const [{ data: qualiData }, { data: raceData }] = await Promise.all([
+  useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`),
+  useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`),
+]);
+if (qualiData.value) {
+  qualiInfo = qualiData.value.MRData.RaceTable.Races[0];
+}
+if (raceData.value) {
+  raceInfo = raceData.value.MRData.RaceTable.Races[0];
+}
 </script>
