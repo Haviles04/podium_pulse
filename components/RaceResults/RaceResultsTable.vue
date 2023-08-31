@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-lg m-auto text-center rounded-lg pb-10">
+  <div class="max-w-screen-lg m-auto text-center rounded-lg pb-10 scroll-auto">
     <div class="rounded-lg overflow-x-auto">
       <table
         class="table-auto border-2 divide-y divide-primary rounded w-full text-center"

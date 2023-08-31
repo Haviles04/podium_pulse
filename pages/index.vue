@@ -7,7 +7,9 @@
       Fueling Your F1 Passion!
     </p>
   </div>
-  <h2 class="text-7xl text-center text-bold italic font-racing mt-10">
+  <h2
+    class="text-7xl text-center text-bold italic font-racing mt-10 border-b-2 border-primary w-fit m-auto"
+  >
     Last Race
   </h2>
   <h3 class="text-4xl text-center text-bold italic font-racing m-10">
