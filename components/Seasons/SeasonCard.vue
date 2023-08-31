@@ -1,7 +1,7 @@
 <template>
   <nuxt-link v-if="!futureRace" :to="`/${race.season}/round/${race.round}`">
     <div
-      :class="` min-h-full rounded-xl border p-6 bg-zinc-700 shadow-lg shadow-zinc-500/50 ${borderColor}`"
+      :class="` min-h-full rounded-xl border p-6 max-w-[275px] ${borderColor}`"
     >
       <p>Round: {{ race.round }}</p>
       <p>{{ race.date }}</p>
@@ -17,5 +17,5 @@ const futureRace = Date.now() < Date.parse(race.FirstPractice?.date);
 const currentWeekend =
   Date.now() >= Date.parse(race.FirstPractice?.date) &&
   Date.parse(race.date) >= Date.now();
-const borderColor = currentWeekend ? "border-purple-500" : "border-slate-500";
+const borderColor = currentWeekend ? "border-fastest" : "border-primary";
 </script>

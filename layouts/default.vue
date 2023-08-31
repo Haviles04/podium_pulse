@@ -1,16 +1,14 @@
 <template>
   <div
-    class="bg-slate-500 min-h-[50px] flex items-center justify-between"
-   
+    class="min-h-[50px] flex items-center justify-between border-b-2 border-primary"
   >
     <p class="mx-6"><nuxt-link to="/">Podium Pulse</nuxt-link></p>
-    <div class="flex items-center z-10 relative" @mouseleave="listTypes = ''" >
+    <div class="flex items-center z-10 relative" @mouseleave="listTypes = ''">
       <button class="mx-8" @mouseenter="listTypes = 'seasons'">Seasons</button>
       <button class="mx-8" @mouseenter="listTypes = 'drivers'">Drivers</button>
       <div
         v-if="showList"
-        class="absolute top-1 pt-10 right-6 bg-slate-500 px-8 py-2 rounded-xl min-w-[200px] text-center -z-10 "
-        
+        class="absolute top-1 pt-10 right-6 bg-background px-8 py-2 rounded-xl min-w-[200px] text-center -z-10"
       >
         <ul>
           <li

@@ -1,7 +1,9 @@
 <template>
   <section>
     <div class="text-center pt-8 [&>*]:p-4 [&>h2]:text-2xl [&>h3]:text-xl">
-      <h1 class="text-4xl font-racing">{{ roundInfo.raceName }}</h1>
+      <h1 class="text-4xl font-racing border-b-2 border-primary w-fit m-auto">
+        {{ roundInfo.raceName }}
+      </h1>
       <h2 class="text-2xl font-racing">
         {{ roundInfo.Circuit.circuitName }}
       </h2>
@@ -16,7 +18,7 @@
         />
         <label
           for="race"
-          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/race:bg-white peer-checked/race:text-slate-500 peer-checked/race:shadow-inner peer-checked/race:shadow-slate-500 cursor-pointer"
+          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/race:bg-white peer-checked/race:text-primary peer-checked/race:shadow-inner peer-checked/race:shadow-primary cursor-pointer"
         >
           Race
         </label>
@@ -30,7 +32,7 @@
         />
         <label
           for="quali"
-          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/quali:bg-white peer-checked/quali:text-slate-500 peer-checked/quali:shadow-inner peer-checked/quali:shadow-slate-500 cursor-pointer"
+          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/quali:bg-white peer-checked/quali:text-primary peer-checked/quali:shadow-inner peer-checked/quali:shadow-primary cursor-pointer"
         >
           Qualifying</label
         >

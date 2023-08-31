@@ -1,10 +1,8 @@
 <template>
   <div class="max-w-screen-lg m-auto text-center rounded-lg pb-10">
-    <div
-      class="rounded-lg bg-zinc-700 shadow-lg shadow-gray-500/50 overflow-x-auto"
-    >
+    <div class="rounded-lg overflow-x-auto">
       <table
-        class="min-w-[600px] table-auto border-collapse rounded w-full text-left divide-y"
+        class="table-auto border-2 divide-y divide-primary rounded w-full text-center"
       >
         <thead>
           <tr>
@@ -17,17 +15,17 @@
           </tr>
         </thead>
 
-        <tbody class="divide-y">
+        <tbody class="divide-y divide-dashed divide-primary">
           <tr v-if="errors?.includes(sessionType)">
             <td colspan="6" class="text-center py-10">Error Loading Data.</td>
           </tr>
-          <tr v-for="driver in data">
-            <driver-table-row
-              :key="driver?.number"
-              :driver="driver"
-              :sessionType="sessionType"
-            />
-          </tr>
+
+          <driver-table-row
+            v-for="driver in data"
+            :key="driver?.number"
+            :driver="driver"
+            :sessionType="sessionType"
+          />
         </tbody>
       </table>
     </div>
