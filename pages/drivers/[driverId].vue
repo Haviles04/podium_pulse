@@ -29,6 +29,7 @@ if (error.value || !driverData.value) {
 }
 
 const [driver] = driverData.value.MRData.DriverTable.Drivers;
+
+console.log(driver);
 const countryCode = getCountryCode(driver.nationality);
-const currentYear = new Date().getFullYear();
 </script>

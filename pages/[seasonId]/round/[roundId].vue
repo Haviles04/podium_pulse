@@ -76,8 +76,6 @@ const sessionInfo = computed(() => {
     : sprintRaceData.value?.MRData.RaceTable.Races[0];
 });
 
-console.log(sessionInfo);
-
 const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
 );
