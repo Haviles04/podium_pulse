@@ -4,6 +4,7 @@
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 m-10">
       <SeasonCard v-for="race in seasonRaces" :race="race" />
     </div>
+    <p>* Sprint Weekend</p>
   </section>
 </template>
 

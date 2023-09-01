@@ -5,14 +5,13 @@
     >
       <p>Round: {{ race.round }}</p>
       <p>{{ race.date }}</p>
-      <p>{{ race.raceName }}</p>
+      <p>{{ race.raceName }}<span v-if="race.Sprint">*</span></p>
     </div>
   </nuxt-link>
 </template>
 
 <script setup>
 const { race } = defineProps(["race"]);
-
 const futureRace = Date.now() < Date.parse(race.FirstPractice?.date);
 const currentWeekend =
   Date.now() >= Date.parse(race.FirstPractice?.date) &&
