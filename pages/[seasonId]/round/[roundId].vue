@@ -36,6 +36,21 @@
         >
           Qualifying</label
         >
+        <span v-if="roundInfo.Sprint">
+          <input
+            class="hidden peer/sprint"
+            type="radio"
+            id="sprint"
+            value="sprint"
+            v-model="sessionType"
+          />
+          <label
+            for="sprint"
+            class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/sprint:bg-white peer-checked/sprint:text-primary peer-checked/sprint:shadow-inner peer-checked/sprint:shadow-primary cursor-pointer"
+          >
+            Sprint</label
+          ></span
+        >
       </form>
 
       <RaceResultsTable
@@ -56,8 +71,12 @@ const errors = [];
 const sessionInfo = computed(() => {
   return sessionType.value === "race"
     ? raceData.value?.MRData.RaceTable.Races[0]
-    : qualiData.value?.MRData.RaceTable.Races[0];
+    : sessionType.value === "quali"
+    ? qualiData.value?.MRData.RaceTable.Races[0]
+    : sprintRaceData.value?.MRData.RaceTable.Races[0];
 });
+
+console.log(sessionInfo);
 
 const roundInfo = await fetchSessionInfo(
   `http://ergast.com/api/f1/${seasonId}/${roundId}.json`
@@ -66,12 +85,16 @@ const roundInfo = await fetchSessionInfo(
 const [
   { data: qualiData, error: qualiError },
   { data: raceData, error: raceError },
+  { data: sprintRaceData, error: sprintRaceError },
 ] = await Promise.all([
   useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/qualifying.json`),
   useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/results.json`),
+  useFetch(`http://ergast.com/api/f1/${seasonId}/${roundId}/sprint.json`),
 ]);
-if (qualiError.value || raceError.value) {
+
+if (qualiError.value || raceError.value || sprintRaceError.value) {
   if (qualiError.value) errors.push("quali");
   if (raceError.value) errors.push("race");
+  if (sprintRaceError.value) errors.push("sprint");
 }
 </script>

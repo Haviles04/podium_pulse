@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Team</th>
             <th>Time</th>
+            <th v-if="sessionType !== 'quali'">Points</th>
           </tr>
         </thead>
 
@@ -20,7 +21,7 @@
             <td colspan="6" class="text-center py-10">Error Loading Data.</td>
           </tr>
           <tr v-if="!data">
-            <td colspan="6" class="text-center py-10">No results yet.</td>
+            <td colspan="6" class="text-center py-10">No results.</td>
           </tr>
           <driver-table-row
             v-for="driver in data"
@@ -40,6 +41,11 @@ const { results, sessionType, errors } = defineProps([
   "sessionType",
   "errors",
 ]);
-const { Results, QualifyingResults } = results || {};
-const data = sessionType === "quali" ? QualifyingResults : Results;
+const { Results, QualifyingResults, SprintResults } = results || {};
+const data =
+  sessionType === "quali"
+    ? QualifyingResults
+    : sessionType === "race"
+    ? Results
+    : SprintResults;
 </script>

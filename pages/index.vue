@@ -15,7 +15,7 @@
   <h3 class="text-4xl text-center text-bold italic font-racing m-10">
     {{ lastRace.raceName }}
   </h3>
-  <race-results-table :results="lastRace" />
+  <race-results-table :results="lastRace" sessionType="race" />
 </template>
 
 <script setup>

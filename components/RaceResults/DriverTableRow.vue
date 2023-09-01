@@ -24,6 +24,7 @@
     <td v-else-if="driver.Q2">{{ driver.Q2 }}</td>
     <td v-else-if="driver.Q1">{{ driver.Q1 }}</td>
     <td v-else>DNF</td>
+    <td v-if="sessionType !== 'quali'">{{ driver.points }}</td>
   </tr>
 </template>
 
