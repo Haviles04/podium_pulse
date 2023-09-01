@@ -3,19 +3,22 @@
     <div class="text-center">
       <h2 class="text-6xl font-racing my-6">Driver Profile</h2>
       <p class="text-2xl">{{ driver.givenName + " " + driver.familyName }}</p>
+      <p class="font-racing text-4xl">{{ driver.permanentNumber }}</p>
       <img
         class="inline ml-2"
         :src="`https://flagsapi.com/${countryCode}/flat/48.png`"
       />
       <p>Nationality: {{ driver.nationality }}</p>
       <p>DOB: {{ driver.dateOfBirth }}</p>
-      <p>Number: {{ driver.permanentNumber }}</p>
     </div>
   </section>
 </template>
 
 <script setup>
 const { driverId } = useRoute().params;
+
+const currentYear = new Date().getFullYear();
+
 const { data: driverData, error } = await useFetch(
   `http://ergast.com/api/f1/drivers/${driverId}.json`
 );
@@ -27,9 +30,13 @@ if (error.value || !driverData.value) {
     fatal: true,
   });
 }
-
 const [driver] = driverData.value.MRData.DriverTable.Drivers;
 
-console.log(driver);
+const { data: driverResults, error: driverResultsError } = await useFetch(
+  `http://ergast.com/api/f1/${currentYear}/drivers/${driverId}/results.json`
+);
+
+const lastRaces = driverResults.value.MRData.RaceTable.Races.slice(-5);
+
 const countryCode = getCountryCode(driver.nationality);
 </script>
