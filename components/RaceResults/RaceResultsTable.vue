@@ -21,7 +21,12 @@
             <td colspan="6" class="text-center py-10">Error Loading Data.</td>
           </tr>
           <tr v-if="!data">
-            <td colspan="6" class="text-center py-10">No results.</td>
+            <td
+              :colspan="sessionType === 'quali' ? 6 : 7"
+              class="text-center py-10"
+            >
+              No results yet.
+            </td>
           </tr>
           <driver-table-row
             v-for="driver in data"
