@@ -10,6 +10,19 @@
 
       <form>
         <input
+          class="hidden peer/quali"
+          type="radio"
+          id="quali"
+          value="quali"
+          v-model="sessionType"
+        />
+        <label
+          for="quali"
+          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/quali:bg-white peer-checked/quali:text-primary peer-checked/quali:shadow-inner peer-checked/quali:shadow-primary cursor-pointer"
+        >
+          Qualifying</label
+        >
+        <input
           class="hidden peer/race"
           type="radio"
           id="race"
@@ -23,19 +36,6 @@
           Race
         </label>
 
-        <input
-          class="hidden peer/quali"
-          type="radio"
-          id="quali"
-          value="quali"
-          v-model="sessionType"
-        />
-        <label
-          for="quali"
-          class="bg-slate-500 p-4 text-xl m-4 rounded-xl peer-checked/quali:bg-white peer-checked/quali:text-primary peer-checked/quali:shadow-inner peer-checked/quali:shadow-primary cursor-pointer"
-        >
-          Qualifying</label
-        >
         <span v-if="roundInfo.Sprint">
           <input
             class="hidden peer/sprint"
@@ -65,7 +65,7 @@
 
 <script setup>
 const { seasonId, roundId } = useRoute().params;
-const sessionType = ref("race");
+const sessionType = ref("quali");
 const errors = [];
 
 const sessionInfo = computed(() => {

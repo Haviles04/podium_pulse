@@ -58,9 +58,9 @@ const listData = computed(() => {
 
 const listLink = (data) => {
   if (listTypes.value === "seasons") {
-    return `seasons/${data?.season}`;
+    return { path: `/seasons/${data?.season}` };
   }
-  return `/drivers/${data?.driverId}`;
+  return { path: `/drivers/${data?.driverId}` };
 };
 
 //Get Season data
