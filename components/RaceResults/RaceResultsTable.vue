@@ -18,7 +18,12 @@
 
         <tbody class="divide-y divide-dashed divide-primary">
           <tr v-if="errors?.includes(sessionType)">
-            <td colspan="6" class="text-center py-10">Error Loading Data.</td>
+            <td
+              :colspan="sessionType === 'quali' ? 6 : 7"
+              class="text-center py-10"
+            >
+              Error Loading Data.
+            </td>
           </tr>
           <tr v-if="!data">
             <td
