@@ -1,5 +1,8 @@
 <template>
-  <nuxt-link v-if="!futureRace" :to="`/${race.season}/round/${race.round}`">
+  <nuxt-link
+    v-if="!futureRace"
+    :to="`seasons/${race.season}/round/${race.round}`"
+  >
     <div
       :class="` min-h-full rounded-xl border p-6 max-w-[275px] ${borderColor}`"
     >
