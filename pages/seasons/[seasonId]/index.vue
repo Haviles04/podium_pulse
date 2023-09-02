@@ -1,7 +1,9 @@
 <template>
   <section class="text-center">
     <h1 class="text-4xl mt-10">{{ seasonId }}</h1>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 m-10">
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 p-10 max-w-[1200px] m-auto"
+    >
       <SeasonCard v-for="race in seasonRaces" :race="race" />
     </div>
     <p>* Sprint Weekend</p>
