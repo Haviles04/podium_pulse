@@ -37,7 +37,7 @@ const setSessionType = (type) => {
   clearTimeout(sessionTypeTimer);
   sessionTypeTimer = setTimeout(() => {
     listTypes.value = type;
-  }, 250);
+  }, 350);
 };
 
 //Get Season data
