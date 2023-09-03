@@ -13,8 +13,7 @@
 </template>
 
 <script setup>
-const { listData, listTypes } = defineProps(["listData", "listTypes"]);
-const clearListTypes = defineEmits(["clearListTypes"]);
+const { listData } = defineProps(["listData"]);
 
 const listLink = (data) => {
   if (data.season) {
