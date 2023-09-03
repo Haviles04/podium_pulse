@@ -39,7 +39,6 @@
 
 <script setup>
 const listTypes = ref("");
-let sessionTypeTimer;
 
 const setSessionType = (type) => {
   listTypes.value = type;
