@@ -1,11 +1,16 @@
 <template>
   <nav
-    class="min-h-[50px] flex items-center justify-between border-b-2 border-primary"
+    class="min-h-[60px] flex items-center justify-between border-b-2 border-primary"
   >
     <nuxt-link to="/" class="mx-6">Podium Pulse</nuxt-link>
-    <ul class="hidden md:flex items-center z-10 relative">
-      <li><nuxt-link to="/schedule" class="mx-8">Schedule</nuxt-link></li>
-      <li class="mx-8 group/seasons" @mouseenter="setSessionType('seasons')">
+    <ul class="hidden md:block h-full [&>*]:inline-block [&>*]:px-8 [&>*]:py-4">
+      <li class="h-full hover:bg-light hover:text-background">
+        <nuxt-link to="/schedule">Schedule</nuxt-link>
+      </li>
+      <li
+        class="group/seasons hover:bg-light hover:text-background"
+        @mouseenter="setSessionType('seasons')"
+      >
         <nuxt-link to="/seasons"> Seasons </nuxt-link>
         <nav-drop-down
           v-if="listTypes === 'seasons'"
@@ -13,7 +18,10 @@
           class="hidden group-hover/seasons:block"
         />
       </li>
-      <li class="mx-8 group/drivers" @mouseenter="setSessionType('drivers')">
+      <li
+        class="group/drivers hover:bg-light hover:text-background"
+        @mouseenter="setSessionType('drivers')"
+      >
         <nuxt-link to="/drivers">Drivers</nuxt-link>
         <nav-drop-down
           v-if="listTypes === 'drivers'"
