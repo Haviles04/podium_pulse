@@ -42,10 +42,7 @@ const listTypes = ref("");
 let sessionTypeTimer;
 
 const setSessionType = (type) => {
-  clearTimeout(sessionTypeTimer);
-  sessionTypeTimer = setTimeout(() => {
-    listTypes.value = type;
-  }, 350);
+  listTypes.value = type;
 };
 
 //Get Season data
