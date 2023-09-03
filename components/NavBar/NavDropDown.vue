@@ -14,9 +14,10 @@
 
 <script setup>
 const { listData, listTypes } = defineProps(["listData", "listTypes"]);
+const clearListTypes = defineEmits(["clearListTypes"]);
 
 const listLink = (data) => {
-  if (listTypes === "seasons") {
+  if (data.season) {
     return { path: `/seasons/${data?.season}` };
   }
   return { path: `/drivers/${data?.driverId}` };

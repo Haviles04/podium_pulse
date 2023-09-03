@@ -5,20 +5,20 @@
     <nuxt-link to="/" class="mx-6">Podium Pulse</nuxt-link>
     <ul class="hidden md:flex items-center z-10 relative">
       <li><nuxt-link to="/schedule" class="mx-8">Schedule</nuxt-link></li>
-      <li class="mx-8" @mouseenter="setSessionType('seasons')">
+      <li class="mx-8 group/seasons" @mouseenter="setSessionType('seasons')">
         <nuxt-link to="/seasons"> Seasons </nuxt-link>
         <nav-drop-down
           v-if="listTypes === 'seasons'"
           :listData="seasons"
-          :listTypes="listTypes"
+          class="hidden group-hover/seasons:block"
         />
       </li>
-      <li class="mx-8" @mouseenter="setSessionType('drivers')">
+      <li class="mx-8 group/drivers" @mouseenter="setSessionType('drivers')">
         <nuxt-link to="/drivers">Drivers</nuxt-link>
         <nav-drop-down
           v-if="listTypes === 'drivers'"
           :listData="drivers"
-          :listTypes="listTypes"
+          class="hidden group-hover/drivers:block"
         />
       </li>
     </ul>
