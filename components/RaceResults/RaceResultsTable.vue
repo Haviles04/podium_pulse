@@ -7,10 +7,10 @@
         <thead>
           <tr>
             <th>Position</th>
-            <th>Grid</th>
-            <th>Number</th>
+            <th class="hidden md:inline">Grid</th>
+            <th class="hidden md:inline">Number</th>
             <th>Name</th>
-            <th>Team</th>
+            <th class="hidden md:inline">Team</th>
             <th>Time</th>
             <th v-if="sessionType !== 'quali'">Points</th>
           </tr>

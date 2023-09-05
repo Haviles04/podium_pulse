@@ -1,24 +1,26 @@
 <template>
   <tr>
     <td>{{ driver.position }}</td>
-    <td>{{ driver.grid || driver.position }}</td>
-    <td>
+    <td class="hidden md:inline">{{ driver.grid || driver.position }}</td>
+    <td class="hidden md:inline">
       {{ driver.number }}
     </td>
     <td :class="hasFastestLap">
-      <nuxt-Link
-        :to="`/drivers/${driver.Driver.driverId}`"
-        class="hover:text-primary"
-      >
-        {{ driver.Driver.givenName + " " + driver.Driver.familyName }}
+      <nuxt-Link :to="`/drivers/${driver.Driver.driverId}`"
+        ><p class="hidden md:inline hover:text-primary">
+          {{ driver.Driver.givenName + " " + driver.Driver.familyName }}
+        </p>
+        <p class="inline md:hidden">
+          {{ driver.Driver.familyName.slice(0, 3) }}
+        </p>
       </nuxt-Link>
       <img
-        class="inline ml-2"
+        class="hidden md:inline ml-2"
         :src="`https://flagsapi.com/${countryCode}/flat/24.png`"
       />
     </td>
 
-    <td>{{ driver.Constructor.name }}</td>
+    <td class="hidden md:inline">{{ driver.Constructor.name }}</td>
     <td v-if="!showQuali">{{ driverTime }}</td>
     <td v-else-if="driver.Q3">{{ driver.Q3 }}</td>
     <td v-else-if="driver.Q2">{{ driver.Q2 }}</td>
