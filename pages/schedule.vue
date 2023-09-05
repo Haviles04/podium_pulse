@@ -42,7 +42,6 @@ if (error.value || !scheduleData.value) {
 }
 
 const schedule = scheduleData.value.MRData.RaceTable.Races;
-console.log(schedule);
 
 const getLocalTime = (date, time) => {
   return new Date(date + " " + time).toLocaleTimeString([], {
