@@ -17,7 +17,7 @@ const { listData } = defineProps(["listData"]);
 
 const listLink = (data) => {
   if (data.season) {
-    return { path: `/seasons/${data?.season}` };
+    return { path: `/results/${data?.season}` };
   }
   return { path: `/drivers/${data?.driverId}` };
 };

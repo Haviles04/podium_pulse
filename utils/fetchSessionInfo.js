@@ -1,6 +1,5 @@
 export const fetchSessionInfo = async (url) => {
   const { data, error } = await useFetch(url);
-
   if (error.value || !data.value) {
     throw createError({
       statusCode: error.value.statusCode,

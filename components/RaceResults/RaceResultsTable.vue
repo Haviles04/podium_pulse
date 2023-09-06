@@ -12,14 +12,14 @@
             <th>Name</th>
             <th class="hidden md:inline">Team</th>
             <th>Time</th>
-            <th v-if="sessionType !== 'quali'">Points</th>
+            <th v-if="sessionType !== 'qualifying'">Points</th>
           </tr>
         </thead>
 
         <tbody class="divide-y divide-dashed divide-primary">
           <tr v-if="errors?.includes(sessionType)">
             <td
-              :colspan="sessionType === 'quali' ? 6 : 7"
+              :colspan="sessionType === 'qualifying' ? 6 : 7"
               class="text-center py-10"
             >
               Error Loading Data.
@@ -27,7 +27,7 @@
           </tr>
           <tr v-if="!data">
             <td
-              :colspan="sessionType === 'quali' ? 6 : 7"
+              :colspan="sessionType === 'qualifying' ? 6 : 7"
               class="text-center py-10"
             >
               No results yet.
@@ -53,7 +53,7 @@ const { results, sessionType, errors } = defineProps([
 ]);
 const { Results, QualifyingResults, SprintResults } = results || {};
 const data =
-  sessionType === "quali"
+  sessionType === "qualifying"
     ? QualifyingResults
     : sessionType === "race"
     ? Results

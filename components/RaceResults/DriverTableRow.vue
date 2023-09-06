@@ -26,7 +26,7 @@
     <td v-else-if="driver.Q2">{{ driver.Q2 }}</td>
     <td v-else-if="driver.Q1">{{ driver.Q1 }}</td>
     <td v-else>DNF</td>
-    <td v-if="sessionType !== 'quali'">{{ driver.points }}</td>
+    <td v-if="sessionType !== 'qualifying'">{{ driver.points }}</td>
   </tr>
 </template>
 
@@ -37,7 +37,7 @@ const hasFastestLap = driver.FastestLap?.rank === "1" ? "text-fastest" : null;
 
 const countryCode = getCountryCode(driver.Driver.nationality);
 
-const showQuali = sessionType === "quali";
+const showQuali = sessionType === "qualifying";
 
 const driverTime =
   driver.status === "Finished" ? driver.Time.time : driver.status;
