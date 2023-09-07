@@ -7,45 +7,50 @@
       <Loader />
     </div>
     <section class="text-center">
-      <form class="mt-10">
-        <label for="years" class="align-text-top">Year</label>
-        <select
-          v-model="selectedSeason"
-          name="years"
-          id="yearSelect"
-          size="5"
-          class="bg-background text-primary"
-          @change="handleChange"
-        >
-          <option v-for="year in years">{{ year }}</option>
-        </select>
+      <form class="mt-10 flex justify-center items-start [&>*]:m-8">
+        <label for="years"
+          ><p class="text-2xl">Year</p>
+          <select
+            v-model="selectedSeason"
+            name="years"
+            id="yearSelect"
+            size="5"
+            class="bg-background text-primary block"
+            @change="handleChange"
+          >
+            <option v-for="year in years">{{ year }}</option>
+          </select>
+        </label>
+        <label for="race" class="block"
+          ><p class="text-2xl">Track</p>
+          <select
+            v-model="selectedRound"
+            name="race"
+            id="raceSelect"
+            size="5"
+            class="bg-background text-primary block"
+            @change="handleChange"
+          >
+            <option v-for="race in seasonRaces" :value="race.round">
+              {{ race.raceName }}
+            </option>
+          </select>
+        </label>
 
-        <label for="race">Track</label>
-        <select
-          v-model="selectedRound"
-          name="race"
-          id="raceSelect"
-          size="5"
-          class="bg-background text-primary"
-          @change="handleChange"
-        >
-          <option v-for="race in seasonRaces" :value="race.round">
-            {{ race.raceName }}
-          </option>
-        </select>
-
-        <label for="session">session</label>
-        <select
-          v-model="selectedSession"
-          name="session"
-          id="sessionSelect"
-          size="2"
-          class="bg-background text-primary"
-          @change="handleChange"
-        >
-          <option value="qualifying">Qualifying</option>
-          <option value="race">Race</option>
-        </select>
+        <label for="session" class="block"
+          ><p class="text-2xl">Session</p>
+          <select
+            v-model="selectedSession"
+            name="session"
+            id="sessionSelect"
+            size="2"
+            class="bg-background text-primary block"
+            @change="handleChange"
+          >
+            <option value="qualifying">Qualifying</option>
+            <option value="race">Race</option>
+          </select>
+        </label>
       </form>
       <h1 class="m-10 text-6xl font-racing">{{ race.raceName }}</h1>
       <race-results-table :results="race" :sessionType="selectedSession" />
