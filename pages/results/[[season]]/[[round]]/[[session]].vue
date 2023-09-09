@@ -7,51 +7,26 @@
       <Loader />
     </div>
     <section class="text-center">
-      <form class="mt-10 flex justify-center items-start [&>*]:m-8">
-        <label for="years"
-          ><p class="text-2xl">Year</p>
-          <select
-            v-model="selectedSeason"
-            name="years"
-            id="yearSelect"
-            size="5"
-            class="bg-background text-primary block"
-            @change="handleChange"
-          >
-            <option v-for="year in years">{{ year }}</option>
-          </select>
-        </label>
-        <label for="race" class="block"
-          ><p class="text-2xl">Track</p>
-          <select
-            v-model="selectedRound"
-            name="race"
-            id="raceSelect"
-            size="5"
-            class="bg-background text-primary block"
-            @change="handleChange"
-          >
-            <option v-for="race in seasonRaces" :value="race.round">
-              {{ race.raceName }}
-            </option>
-          </select>
-        </label>
-
-        <label for="session" class="block"
-          ><p class="text-2xl">Session</p>
-          <select
-            v-model="selectedSession"
-            name="session"
-            id="sessionSelect"
-            size="2"
-            class="bg-background text-primary block"
-            @change="handleChange"
-          >
-            <option value="qualifying">Qualifying</option>
-            <option value="race">Race</option>
-          </select>
-        </label>
-      </form>
+      <div class="flex justify-center items-start">
+        <result-select
+          v-model="selectedSeason"
+          :items="years"
+          labels="years"
+          @handleResultsChange="handleSeasonChange"
+        />
+        <result-select
+          v-model="selectedRound"
+          :items="raceList"
+          labels="Round"
+          @handleResultsChange="handleRoundChange"
+        />
+        <result-select
+          v-model="selectedSession"
+          :items="['race', 'qualifying']"
+          labels="Round"
+          @handleResultsChange="handleRoundChange"
+        />
+      </div>
       <h1 class="m-10 text-6xl font-racing">{{ race.raceName }}</h1>
       <race-results-table :results="race" :sessionType="selectedSession" />
     </section>
@@ -59,22 +34,38 @@
 </template>
 
 <script setup>
-const router = useRouter();
-const route = useRoute();
-const { season, round, session } = route.params;
 const loading = ref(false);
+const route = useRoute();
+const router = useRouter();
+const { season, round, session } = route.params;
 const selectedSeason = ref(season);
 const selectedRound = ref(round);
 const selectedSession = ref(session || "race");
 const years = getLast10Seasons();
-const race =
+
+const handleSeasonChange = () => {
+  loading.value = true;
+  router.push({
+    path: `/results/${selectedSeason.value}`,
+  });
+};
+
+const handleRoundChange = () => {
+  loading.value = true;
+  router.push({
+    path: `/results/${selectedSeason.value}/${selectedRound.value}/${selectedSession.value}`,
+  });
+};
+
+//SSR//
+let race =
   !season && !round && !session
     ? await fetchSessionInfo(
         "http://ergast.com/api/f1/current/last/results.json"
       )
     : await fetchSessionInfo(
         `http://ergast.com/api/f1/${season}/${round}/${
-          session === "race" ? "results" : session
+          session === "race" ? "results" : "qualifying"
         }.json`
       );
 selectedSeason.value = race.season;
@@ -84,11 +75,8 @@ const { data: seasonData } = await useFetch(
   `http://ergast.com/api/f1/${selectedSeason.value}.json`
 );
 const seasonRaces = seasonData.value.MRData.RaceTable.Races;
-
-const handleChange = () => {
-  loading.value = true;
-  router.push({
-    path: `/results/${selectedSeason.value}/${selectedRound.value}/${selectedSession.value}`,
-  });
-};
+const raceList = seasonRaces.map(({ raceName, round }) => ({
+  raceName,
+  round,
+}));
 </script>
