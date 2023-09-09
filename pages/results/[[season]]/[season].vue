@@ -23,7 +23,7 @@
         v-model="selectedSession"
         :items="['race', 'qualifying']"
         label="Round"
-        @handleResultsChange="handleRoundChange"
+        @handleResultsChange="null"
       />
     </form>
   </section>
@@ -58,8 +58,7 @@ const { data: seasonData } = await useFetch(
   `http://ergast.com/api/f1/${selectedSeason.value}.json`
 );
 const seasonRaces = seasonData.value.MRData.RaceTable.Races;
-const raceList = seasonRaces.map(({ raceName, round }) => ({
-  raceName,
-  round,
-}));
+const raceList = seasonRaces
+  .filter(({ FirstPractice }) => Date.now() >= Date.parse(FirstPractice.date))
+  .map(({ raceName, round }) => ({ raceName, round }));
 </script>
