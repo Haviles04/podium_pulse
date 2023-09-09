@@ -6,7 +6,7 @@
       :name="label"
       :id="label + 'select'"
       size="5"
-      class="bg-background text-primary block no-scrollbar m-4 border rounded-xl p-4 border-light"
+      class="bg-background text-primary block no-scrollbar m-1 border rounded-xl p-4 border-light"
       @change="handleChange"
     >
       <option v-for="item in items" :value="item.round ?? item">
