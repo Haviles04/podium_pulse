@@ -1,21 +1,19 @@
 <template>
-  <form class="mt-10 [&>*]:m-8">
-    <label for="years"
-      ><p class="text-2xl">{{ label }}</p>
-      <select
-        v-model="value"
-        :name="label"
-        :id="label + 'select'"
-        size="5"
-        class="bg-background text-primary block"
-        @change="handleChange"
-      >
-        <option v-for="item in items" :value="item.round ?? item">
-          {{ item.raceName ?? item }}
-        </option>
-      </select>
-    </label>
-  </form>
+  <label class="text-primary" :for="label"
+    ><span class="text-xl underline">{{ label }}</span>
+    <select
+      v-model="value"
+      :name="label"
+      :id="label + 'select'"
+      size="5"
+      class="bg-background text-primary block no-scrollbar m-4 border rounded-xl p-4 border-light"
+      @change="handleChange"
+    >
+      <option v-for="item in items" :value="item.round ?? item">
+        {{ item.raceName ?? item }}
+      </option>
+    </select>
+  </label>
 </template>
 
 <script setup>

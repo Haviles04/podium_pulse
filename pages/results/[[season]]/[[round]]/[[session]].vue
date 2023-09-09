@@ -7,26 +7,26 @@
       <Loader />
     </div>
     <section class="text-center">
-      <div class="flex justify-center items-start">
+      <form class="pt-10 [&>*]:m-6 flex justify-center align-center">
         <result-select
           v-model="selectedSeason"
           :items="years"
-          labels="years"
+          label="Season"
           @handleResultsChange="handleSeasonChange"
         />
         <result-select
           v-model="selectedRound"
           :items="raceList"
-          labels="Round"
+          label="Round"
           @handleResultsChange="handleRoundChange"
         />
         <result-select
           v-model="selectedSession"
           :items="['race', 'qualifying']"
-          labels="Round"
+          label="Round"
           @handleResultsChange="handleRoundChange"
         />
-      </div>
+      </form>
       <h1 class="m-10 text-6xl font-racing">{{ race.raceName }}</h1>
       <race-results-table :results="race" :sessionType="selectedSession" />
     </section>
