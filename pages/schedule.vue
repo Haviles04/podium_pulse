@@ -9,19 +9,14 @@
           class="table-auto border-2 divide-y divide-primary rounded w-full text-center"
         >
           <tr>
-            <th>Round</th>
+            <th class="hidden md:block">Round</th>
             <th>Date</th>
             <th>Race Name</th>
             <th>Time</th>
           </tr>
         </thead>
         <tbody class="border-2 divide-y divide-dashed divide-primary">
-          <tr v-for="race in schedule">
-            <td>{{ race.round }}</td>
-            <td>{{ new Date(race.date).toLocaleDateString() }}</td>
-            <td>{{ race.raceName }}</td>
-            <td>{{ getLocalTime(race.date, race.time) }}</td>
-          </tr>
+          <schedule-table-row v-for="race in schedule" :race="race" />
         </tbody>
       </table>
     </div>
@@ -42,11 +37,4 @@ if (error.value || !scheduleData.value) {
 }
 
 const schedule = scheduleData.value.MRData.RaceTable.Races;
-
-const getLocalTime = (date, time) => {
-  return new Date(date + " " + time).toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-};
 </script>
