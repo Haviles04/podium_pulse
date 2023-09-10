@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <div class="p-2">
     <table
-      class="table-auto border-2 min-w-[600px] divide-y divide-primary m-auto text-center"
+      class="rounded-xl border-2 min-w-[600px] divide-y divide-primary m-auto text-center"
     >
       <thead>
         <tr>
@@ -15,7 +15,7 @@
         <season-table-row v-for="race in races" :race="race" />
       </tbody>
     </table>
-  </section>
+  </div>
 </template>
 
 <script setup>
