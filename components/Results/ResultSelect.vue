@@ -29,7 +29,7 @@
         class="bg-background text-primary block no-scrollbar m-1 border-2 rounded-xl p-4 border-light"
         @change="handleRoundChange"
       >
-        <option v-for="race in raceList" :value="race.round">
+        <option v-for="race in data" :value="race.round">
           {{ race.raceName }}
         </option>
       </select>
@@ -40,6 +40,7 @@
         v-model="selectedSession"
         name="session"
         id="sessionSelect"
+        :disabled="!selectedRound"
         size="5"
         class="bg-background text-primary block no-scrollbar m-1 border-2 rounded-xl p-4 border-light"
         @change="handleRoundChange"
@@ -70,18 +71,18 @@ const handleSeasonChange = () => {
 const handleRoundChange = () => {
   loading.value = true;
   router.push({
-    path: `/results/${selectedSeason.value}/${selectedRound.value}/${
+    path: `/results/${selectedSeason.value}/${selectedRound.value || 1}/${
       selectedSession.value || "race"
     }`,
   });
 };
 
 // SSR
-const { data: seasonData } = await useFetch(
-  `http://ergast.com/api/f1/${season}.json`
-);
-const seasonRaces = seasonData.value.MRData.RaceTable.Races;
-const raceList = seasonRaces
-  .filter(({ date }) => Date.now() >= Date.parse(date))
-  .map(({ raceName, round }) => ({ raceName, round }));
+const { data } = await useFetch(`http://ergast.com/api/f1/${season}.json`, {
+  transform: (data) => {
+    return data.MRData.RaceTable.Races.filter(
+      ({ date }) => Date.now() >= Date.parse(date)
+    ).map(({ raceName, round }) => ({ raceName, round }));
+  },
+});
 </script>

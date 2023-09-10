@@ -1,7 +1,7 @@
 <template>
-  <div class="p-2">
+  <div class="border-2 rounded-xl w-fit m-auto">
     <table
-      class="rounded-xl border-2 min-w-[600px] divide-y divide-primary m-auto text-center"
+      class="rounded-xl min-w-[600px] divide-y divide-primary m-auto text-center"
     >
       <thead>
         <tr>
