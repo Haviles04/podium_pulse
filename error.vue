@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-defineProps(["error"]);
+const { error } = defineProps(["error"]);
 
 const handleClearError = () => clearError({ redirect: "/" });
 </script>
