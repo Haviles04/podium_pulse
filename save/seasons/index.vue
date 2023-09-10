@@ -1,1 +1,0 @@
-<template>Seasons</template>
