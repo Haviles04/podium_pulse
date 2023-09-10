@@ -22,10 +22,15 @@
 const route = useRoute();
 const { season, round, session } = route.params;
 const showOnlySeason = season && !round && !session;
+const showLatest = !season && !round && !session;
 
 const apiEndpoint = "http://ergast.com/api/f1";
 const sessionType = session === "qualifying" ? session : "results";
-const slug = showOnlySeason ? season : `${season}/${round}/${sessionType}`;
+const slug = showOnlySeason
+  ? season
+  : showLatest
+  ? `current/last/results`
+  : `${season}/${round}/${sessionType}`;
 
 const { data } = await useFetch(`${apiEndpoint}/${slug}.json`, {
   transform: (data) => {
@@ -34,6 +39,4 @@ const { data } = await useFetch(`${apiEndpoint}/${slug}.json`, {
       : data.MRData.RaceTable.Races[0];
   },
 });
-
-console.log(data);
 </script>
