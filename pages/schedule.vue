@@ -9,14 +9,14 @@
           class="table-auto border-2 divide-y divide-primary rounded w-full text-center"
         >
           <tr>
-            <th class="hidden md:block">Round</th>
+            <th class="hidden">Round</th>
             <th>Date</th>
             <th>Race Name</th>
             <th>Time</th>
           </tr>
         </thead>
         <tbody class="border-2 divide-y divide-dashed divide-primary">
-          <schedule-table-row v-for="race in schedule" :race="race" />
+          <schedule-table-row v-for="race in data" :race="race" />
         </tbody>
       </table>
     </div>
@@ -24,17 +24,20 @@
 </template>
 
 <script setup>
-const { data: scheduleData, error } = await useFetch(
-  `http://ergast.com/api/f1/current.json`
+const { data, error } = await useFetch(
+  `http://ergast.com/api/f1/current.json`,
+  {
+    transform: (data) => {
+      return data.MRData.RaceTable.Races;
+    },
+  }
 );
 
-if (error.value || !scheduleData.value) {
+if (error.value) {
   throw createError({
     statusCode: error.value.statusCode,
     statusMessage: error.value.message,
     fatal: true,
   });
 }
-
-const schedule = scheduleData.value.MRData.RaceTable.Races;
 </script>
