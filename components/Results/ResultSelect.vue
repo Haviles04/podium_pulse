@@ -56,7 +56,8 @@
 const router = useRouter();
 const { season, round, session } = useRoute().params;
 const years = getLast10Seasons();
-const selectedSeason = ref(season);
+const currentYear = new Date().getFullYear();
+const selectedSeason = ref(season || currentYear);
 const selectedRound = ref(round);
 const selectedSession = ref(session);
 const loading = ref(false);
@@ -78,11 +79,14 @@ const handleRoundChange = () => {
 };
 
 // SSR
-const { data } = await useFetch(`http://ergast.com/api/f1/${season}.json`, {
-  transform: (data) => {
-    return data.MRData.RaceTable.Races.filter(
-      ({ date }) => Date.now() >= Date.parse(date)
-    ).map(({ raceName, round }) => ({ raceName, round }));
-  },
-});
+const { data } = await useFetch(
+  `http://ergast.com/api/f1/${selectedSeason.value}.json`,
+  {
+    transform: (data) => {
+      return data.MRData.RaceTable.Races.filter(
+        ({ date }) => Date.now() >= Date.parse(date)
+      ).map(({ raceName, round }) => ({ raceName, round }));
+    },
+  }
+);
 </script>
