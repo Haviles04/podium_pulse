@@ -2,7 +2,9 @@
   <main>
     <section class="text-center">
       <result-select />
-      <div v-if="showOnlySeason">NEED TO MAKE SEASON TABLE</div>
+      <div v-if="showOnlySeason">
+        <season-races-table :races="seasonData" />
+      </div>
       <div v-else>
         <h1 class="m-10 text-6xl font-racing">{{ raceData.raceName }}</h1>
         <race-results-table
