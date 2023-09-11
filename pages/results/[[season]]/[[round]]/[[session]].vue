@@ -7,7 +7,10 @@
         <season-races-table :races="data" />
       </div>
       <div v-else>
-        <h1 class="m-10 text-6xl font-racing">{{ data.raceName }}</h1>
+        <h1 class="mt-10 text-3xl md:text-6xl font-racing">
+          {{ data.raceName }}
+        </h1>
+        <h2 class="mb-6 text-xl md:text-2xl">{{ data.Circuit.circuitName }}</h2>
         <race-results-table
           :key="data"
           :results="data"
@@ -39,4 +42,6 @@ const { data } = await useFetch(`${apiEndpoint}/${slug}.json`, {
       : data.MRData.RaceTable.Races[0];
   },
 });
+
+console.log(data);
 </script>

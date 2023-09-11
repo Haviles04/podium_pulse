@@ -1,11 +1,11 @@
 <template>
   <div class="border-2 rounded-xl w-fit m-auto">
     <table
-      class="rounded-xl min-w-[600px] divide-y divide-primary m-auto text-center"
+      class="rounded-xl md:min-w-[600px] divide-y divide-primary m-auto text-center"
     >
       <thead>
         <tr>
-          <th>Round</th>
+          <th class="hidden md:block">Round</th>
           <th>Race</th>
           <th>Date</th>
           <th>Time</th>
