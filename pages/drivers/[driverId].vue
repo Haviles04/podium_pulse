@@ -2,6 +2,13 @@
   <section>
     <div class="text-center">
       <h2 class="text-6xl font-racing my-6">Driver Profile</h2>
+      <img
+        v-if="imageExist"
+        class="max-w-[800px] m-auto"
+        :src="imgSource"
+        @error="imageExist = false"
+
+      />
       <p class="text-2xl">{{ driver.givenName + " " + driver.familyName }}</p>
       <p class="font-racing text-4xl">{{ driver.permanentNumber }}</p>
       <img
@@ -16,14 +23,24 @@
 
 <script setup>
 const { driverId } = useRoute().params;
-
 const currentYear = new Date().getFullYear();
+const imageExist = ref(true);
 
 const { data: driver, error } = await useFetch(
   `http://ergast.com/api/f1/drivers/${driverId}.json`, {
-    transform: (data) => { return data.MRData.DriverTable.Drivers[0]; }
-  }
+  transform: (data) => { return data.MRData.DriverTable.Drivers[0]; }
+}
 );
+
+const { data: driverResults, error: driverResultsError } = await useFetch(
+  `http://ergast.com/api/f1/${currentYear}/drivers/${driverId}/results.json`
+);
+
+const lastRaces = driverResults.value.MRData.RaceTable.Races.slice(-5);
+
+const countryCode = getCountryCode(driver.value.nationality);
+
+const imgSource = `/images/drivers/${driver.value.familyName.toLowerCase()}.png`
 
 if (error.value || !driver.value) {
   throw createError({
@@ -33,11 +50,4 @@ if (error.value || !driver.value) {
   });
 }
 
-const { data: driverResults, error: driverResultsError } = await useFetch(
-  `http://ergast.com/api/f1/${currentYear}/drivers/${driverId}/results.json`
-);
-
-const lastRaces = driverResults.value.MRData.RaceTable.Races.slice(-5);
-
-const countryCode = getCountryCode(driver.value.nationality);
 </script>
