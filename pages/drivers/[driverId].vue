@@ -19,18 +19,19 @@ const { driverId } = useRoute().params;
 
 const currentYear = new Date().getFullYear();
 
-const { data: driverData, error } = await useFetch(
-  `http://ergast.com/api/f1/drivers/${driverId}.json`
+const { data: driver, error } = await useFetch(
+  `http://ergast.com/api/f1/drivers/${driverId}.json`, {
+    transform: (data) => { return data.MRData.DriverTable.Drivers[0]; }
+  }
 );
 
-if (error.value || !driverData.value) {
+if (error.value || !driver.value) {
   throw createError({
     statusCode: error.value.statusCode,
     statusMessage: error.value.message,
     fatal: true,
   });
 }
-const [driver] = driverData.value.MRData.DriverTable.Drivers;
 
 const { data: driverResults, error: driverResultsError } = await useFetch(
   `http://ergast.com/api/f1/${currentYear}/drivers/${driverId}/results.json`
@@ -38,5 +39,5 @@ const { data: driverResults, error: driverResultsError } = await useFetch(
 
 const lastRaces = driverResults.value.MRData.RaceTable.Races.slice(-5);
 
-const countryCode = getCountryCode(driver.nationality);
+const countryCode = getCountryCode(driver.value.nationality);
 </script>
