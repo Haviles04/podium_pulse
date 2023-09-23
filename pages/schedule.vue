@@ -9,7 +9,7 @@
           class="table-auto border-2 divide-y divide-primary rounded w-full text-center"
         >
           <tr>
-            <th class="hidden">Round</th>
+            <th class="hidden md:block" >Round</th>
             <th>Date</th>
             <th>Race Name</th>
             <th>Time</th>
