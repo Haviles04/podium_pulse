@@ -1,37 +1,39 @@
 <template>
-  <nav
-    class="min-h-[60px] flex items-center justify-between border-b-2 border-primary"
-  >
-    <nuxt-link to="/" class="mx-6">Podium Pulse</nuxt-link>
-    <ul class="hidden md:block h-full [&>*]:inline-block [&>*]:px-8 [&>*]:py-4">
-      <li class="h-full hover:bg-light hover:text-background">
-        <nuxt-link to="/schedule">Schedule</nuxt-link>
-      </li>
-      <li
-        class="group/seasons hover:bg-light hover:text-background"
-        @mouseenter="setSessionType('seasons')"
+  <nav class="min-h-[60px] bg-secondary border-b-4 border-primary">
+    <div class="max-w-[1000px] m-auto flex items-center justify-between">
+      <nuxt-link to="/" class="mx-6">Podium Pulse</nuxt-link>
+      <ul
+        class="hidden md:block h-full [&>*]:inline-block [&>*]:px-8 [&>*]:py-4"
       >
-        <nuxt-link to="/results"> Seasons </nuxt-link>
-        <nav-drop-down
-          v-if="listTypes === 'seasons'"
-          :listData="seasons"
-          class="hidden group-hover/seasons:block"
-        />
-      </li>
-      <li
-        class="group/drivers hover:bg-light hover:text-background"
-        @mouseenter="setSessionType('drivers')"
-      >
-        <nuxt-link to="/drivers">Drivers</nuxt-link>
-        <nav-drop-down
-          v-if="listTypes === 'drivers'"
-          :listData="drivers"
-          class="hidden group-hover/drivers:block"
-        />
-      </li>
-    </ul>
-    <div class="block md:hidden">
-      <button class="mx-8">Menu</button>
+        <li class="h-full hover:bg-light hover:text-background">
+          <nuxt-link to="/schedule">Schedule</nuxt-link>
+        </li>
+        <li
+          class="group/seasons hover:bg-light hover:text-background"
+          @mouseenter="setSessionType('seasons')"
+        >
+          <nuxt-link to="/results"> Seasons </nuxt-link>
+          <nav-drop-down
+            v-if="listTypes === 'seasons'"
+            :listData="seasons"
+            class="hidden group-hover/seasons:block"
+          />
+        </li>
+        <li
+          class="group/drivers hover:bg-light hover:text-background"
+          @mouseenter="setSessionType('drivers')"
+        >
+          <nuxt-link to="/drivers">Drivers</nuxt-link>
+          <nav-drop-down
+            v-if="listTypes === 'drivers'"
+            :listData="drivers"
+            class="hidden group-hover/drivers:block"
+          />
+        </li>
+      </ul>
+      <div class="block md:hidden">
+        <button class="mx-8">Menu</button>
+      </div>
     </div>
   </nav>
   <slot />

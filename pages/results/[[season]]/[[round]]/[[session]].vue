@@ -43,5 +43,11 @@ const { data } = await useFetch(`${apiEndpoint}/${slug}.json`, {
   },
 });
 
-console.log(data);
+if (!data.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page not found!",
+    fatal: true,
+  });
+}
 </script>
