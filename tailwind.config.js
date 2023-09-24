@@ -12,6 +12,7 @@ module.exports = {
       light: "#ffffff",
       primary: "#84cc16",
       fastest: "#7c3aed",
+      secondary: "#595b5f",
     },
     extend: {},
   },
