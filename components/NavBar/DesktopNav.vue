@@ -35,6 +35,6 @@ const setSessionType = (type) => {
   listTypes.value = type;
 };
 
-const { seasons } = getSeasons();
-const { drivers } = getDrivers();
+const { seasons } = useSeasons();
+const { drivers } = useDrivers();
 </script>
