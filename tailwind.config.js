@@ -13,6 +13,8 @@ module.exports = {
       primary: "#c5fd50",
       fastest: "#7c3aed",
       secondary: "#252833",
+      card: "#1e2028",
+      border: "#333333",
     },
     extend: {},
   },

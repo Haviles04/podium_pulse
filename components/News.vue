@@ -1,15 +1,15 @@
 <template>
   <section
-    class="grid grid-cols-1 md:grid-cols-2 m-auto gap-10 mt-20 max-w-[1000px] bg-secondary p-8 rounded-xl"
+    class="grid grid-cols-1 md:grid-cols-2 m-auto gap-10 mt-20 max-w-[1000px] bg-secondary md:p-8 rounded-xl"
   >
     <article
       v-for="(article, i) in news"
-      :class="`text-centerflex flex-col rounded-xl shadow shadow-light overflow-hidden ${
+      :class="`text-centerflex flex-col bg-card border-2 border-border rounded-xl overflow-hidden ${
         i === 0 ? 'md:col-span-2' : null
       }`"
     >
       <img class="w-full" :src="article.urlToImage" />
-      <h3 class="text-xl text-center m-2">
+      <h3 class="text-xl text-center p-2 border-b-2 border-border">
         <a
           :href="article.url"
           target="_blank"
