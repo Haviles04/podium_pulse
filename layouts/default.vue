@@ -1,37 +1,9 @@
 <template>
-  <nav class="min-h-[60px] border-b-4 border-primary bg-secondary">
-    <div class="m-auto flex max-w-[1000px] items-center justify-between">
+  <nav class="border-b-4 border-primary bg-secondary">
+    <div class="m-auto flex h-full max-w-[1000px] items-center justify-between">
       <nuxt-link to="/" class="mx-6">Podium Pulse</nuxt-link>
-      <ul class="hidden h-full md:block [&>*]:inline-block [&>*]:px-8 [&>*]:py-4">
-        <li class="h-full hover:bg-light hover:text-background">
-          <nuxt-link to="/schedule">Schedule</nuxt-link>
-        </li>
-        <li
-          class="group/seasons hover:bg-light hover:text-background"
-          @mouseenter="setSessionType('seasons')"
-        >
-          <nuxt-link to="/results"> Seasons </nuxt-link>
-          <nav-drop-down
-            v-if="listTypes === 'seasons'"
-            :listData="seasons"
-            class="hidden group-hover/seasons:block"
-          />
-        </li>
-        <li
-          class="group/drivers hover:bg-light hover:text-background"
-          @mouseenter="setSessionType('drivers')"
-        >
-          <nuxt-link to="/drivers">Drivers</nuxt-link>
-          <nav-drop-down
-            v-if="listTypes === 'drivers'"
-            :listData="drivers"
-            class="hidden group-hover/drivers:block"
-          />
-        </li>
-      </ul>
-      <div class="block md:hidden">
-        <button class="mx-8">Menu</button>
-      </div>
+      <desktop-nav class="hidden md:flex" />
+      <mobile-nav class="block md:hidden" />
     </div>
   </nav>
   <slot />
