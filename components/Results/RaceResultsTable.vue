@@ -1,6 +1,6 @@
 <template>
-  <div class="m-auto max-w-[1000px] rounded-xl border-2">
-    <table class="w-full table-auto divide-y divide-primary text-center">
+  <div class="m-auto max-w-[1000px] overflow-hidden rounded-xl border-2">
+    <table class="w-full table-auto divide-y divide-primary bg-card text-center">
       <thead>
         <tr>
           <th>Position</th>

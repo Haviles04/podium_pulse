@@ -8,7 +8,7 @@
         i === 0 ? 'md:col-span-2' : null
       }`"
     >
-      <img class="w-full" :src="article.urlToImage" />
+      <img class="h-3/6 w-full object-cover" :src="article.urlToImage" />
       <h3 class="border-b-2 border-border p-2 text-center text-xl">
         <a :href="article.url" target="_blank" class="flex flex-col justify-between">{{ article.title }}</a>
       </h3>

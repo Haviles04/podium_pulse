@@ -1,8 +1,8 @@
 <template>
   <div
-    class="absolute w-full left-0 top-14 bg-light text-background text-xl underline px-8 py-10 text-center rounded"
+    class="absolute left-0 right-0 top-14 m-auto mx-auto max-w-[1200px] rounded-xl bg-light px-8 py-10 text-center text-xl text-background underline"
   >
-    <ul class="list-none flex gap-4 justify-between flex-wrap justify-center">
+    <ul class="flex list-none flex-wrap justify-center justify-between gap-4">
       <li v-for="data in listData">
         <nuxt-link :to="listLink(data)">
           {{ data.season || data.givenName + ' ' + data?.familyName }}

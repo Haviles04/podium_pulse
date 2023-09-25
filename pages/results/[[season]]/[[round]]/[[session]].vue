@@ -1,13 +1,13 @@
 <template>
   <main>
-    <section class="text-center">
+    <section class="m-auto mt-10 max-w-[1200px] rounded-xl bg-secondary px-10 pb-10 text-center">
       <result-select />
       <div v-if="showOnlySeason">
-        <h1 class="m-10 text-6xl font-racing">{{ data[0].season }}</h1>
+        <h1 class="m-10 font-racing text-6xl">{{ data[0].season }}</h1>
         <season-races-table :races="data" />
       </div>
       <div v-else>
-        <h1 class="mt-10 text-3xl md:text-6xl font-racing">
+        <h1 class="mt-10 font-racing text-3xl md:text-6xl">
           {{ data.raceName }}
         </h1>
         <h2 class="mb-6 text-xl md:text-2xl">{{ data.Circuit.circuitName }}</h2>

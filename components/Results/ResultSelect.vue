@@ -13,7 +13,7 @@
         name="year"
         id="yearSelect"
         size="1"
-        class="no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background p-4 text-primary md:m-1 md:w-fit"
+        :class="selectClass"
         @change="handleSeasonChange"
       >
         <option disabled selected>Year</option>
@@ -27,7 +27,7 @@
         name="round"
         id="roundSelect"
         size="1"
-        class="no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background p-4 text-primary md:m-1 md:w-fit"
+        :class="selectClass"
         @change="handleRoundChange"
       >
         <option disabled selected>Round</option>
@@ -43,7 +43,7 @@
         name="session"
         id="sessionSelect"
         :disabled="!selectedRound"
-        class="no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background p-4 text-primary md:m-1 md:w-fit"
+        :class="selectClass"
         @change="handleRoundChange"
       >
         <option selected disabled>Session</option>
@@ -63,6 +63,9 @@ const selectedSeason = ref(season || currentYear);
 const selectedRound = ref(round || 1);
 const selectedSession = ref(session || 'race');
 const loading = ref(false);
+
+const selectClass =
+  'no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background bg-card p-4 text-primary md:m-1 md:w-fit';
 
 const handleSeasonChange = () => {
   loading.value = true;
