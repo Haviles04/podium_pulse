@@ -8,11 +8,6 @@
         Fueling Your F1 Passion!
       </p>
     </div>
-    <h2
-      class="text-bold m-auto mt-6 w-fit border-b-2 border-primary text-center font-racing text-4xl italic md:text-7xl"
-    >
-      Recent News
-    </h2>
     <News />
     <div class="mt-10 bg-secondary p-2">
       <h2
