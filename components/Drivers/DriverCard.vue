@@ -1,6 +1,9 @@
 <template>
-  <div class="m-auto my-2 w-fit rounded-xl bg-card p-4 text-center">
-    <nuxt-link :to="`/drivers/${driver.driverId}`" class=""
+  <div
+    @click="router.push(link)"
+    class="m-auto my-2 w-fit rounded-xl bg-card p-4 text-center hover:cursor-pointer"
+  >
+    <nuxt-link :to="link"
       ><h2 class="text-2xl">{{ driver.givenName + ' ' + driver.familyName }}</h2></nuxt-link
     >
     <img :src="imgSource" />
@@ -8,6 +11,8 @@
 </template>
 
 <script setup>
+const router = useRouter();
 const { driver } = defineProps(['driver']);
 const imgSource = `/images/drivers/${driver.familyName.toLowerCase()}.png`;
+const link = `/drivers/${driver.driverId}`;
 </script>

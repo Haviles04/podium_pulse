@@ -7,6 +7,6 @@
 </template>
 
 <script setup>
-const { drivers } = getDrivers();
+const { drivers } = useDrivers();
 console.log(drivers.value);
 </script>
