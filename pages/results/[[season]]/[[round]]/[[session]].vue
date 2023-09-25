@@ -26,7 +26,7 @@ const { season, round, session } = route.params;
 const showOnlySeason = season && !round && !session;
 const showLatest = !season && !round && !session;
 
-const apiEndpoint = 'http://ergast.com/api/f1';
+const apiEndpoint = 'https://ergast.com/api/f1';
 const sessionType = session === 'qualifying' ? session : 'results';
 const slug = showOnlySeason
   ? season
