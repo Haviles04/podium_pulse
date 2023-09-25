@@ -4,9 +4,9 @@
       class="flex h-[75vh] flex-col items-center justify-center bg-[url('/f1.jpg')] bg-fixed bg-center bg-no-repeat pt-20 text-center font-racing italic md:h-[50vh]"
     >
       <h1 class="rounded-xl bg-secondary p-4 text-6xl md:text-8xl">Podium Pulse</h1>
-      <p class="rounded-xl border-b-2 border-primary bg-secondary p-4 text-2xl md:text-4xl">
+      <h2 class="rounded-xl border-b-2 border-primary bg-secondary p-4 text-2xl md:text-4xl">
         Fueling Your F1 Passion!
-      </p>
+      </h2>
     </div>
     <News />
     <div class="mt-10 bg-secondary p-2">
