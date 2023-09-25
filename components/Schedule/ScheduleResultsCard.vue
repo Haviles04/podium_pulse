@@ -25,5 +25,4 @@ const { data } = await useFetch(`http://ergast.com/api/f1/${season}/${round}/res
     return data.MRData.RaceTable.Races[0].Results.splice(0, 3);
   },
 });
-console.log(data.value);
 </script>

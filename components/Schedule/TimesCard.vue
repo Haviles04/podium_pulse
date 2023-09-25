@@ -33,7 +33,6 @@
 <script setup>
 const { race } = defineProps(['race']);
 
-console.log(race);
 const getDateAndTime = (date, time) => {
   const dateAndTimeString = new Date(date + ' ' + time);
   const newDate = dateAndTimeString.toLocaleString('default', {

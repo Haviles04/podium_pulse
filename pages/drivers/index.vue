@@ -8,5 +8,4 @@
 
 <script setup>
 const { drivers } = useDrivers();
-console.log(drivers.value);
 </script>

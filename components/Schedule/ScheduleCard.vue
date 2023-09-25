@@ -11,6 +11,5 @@
 
 <script setup>
 const { race } = defineProps(['race']);
-console.log(race);
 const futureRace = new Date(race.date) > new Date();
 </script>
