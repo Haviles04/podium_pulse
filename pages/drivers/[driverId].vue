@@ -1,6 +1,7 @@
 <template>
   <section>
-    <div class="m-auto mt-10 w-fit rounded-xl bg-secondary p-8 text-center">
+    <div v-if="error">Error loading data</div>
+    <div v-else class="m-auto mt-10 w-fit rounded-xl bg-secondary p-8 text-center">
       <h2 class="my-6 font-racing text-6xl">Driver Profile</h2>
       <div class="m-auto h-fit max-w-[800px]">
         <img v-if="imageExist" :src="imgSource" @error="imageExist = false" />
@@ -34,15 +35,14 @@
 
 <script setup>
 const { driverId } = useRoute().params;
-const currentYear = new Date().getFullYear();
 const imageExist = ref(true);
 
-const { data: driver } = await useFetch(`http://ergast.com/api/f1/drivers/${driverId}.json`, {
+const { data: driver, error } = await useFetch(`http://ergast.com/api/f1/drivers/${driverId}.json`, {
   transform: (data) => {
     return data.MRData.DriverTable.Drivers[0];
   },
 });
-if (!driver.value) {
+if (error.value) {
   throw createError({
     statusCode: error.value.statusCode,
     statusMessage: error.value.message,
@@ -59,6 +59,4 @@ const { data: standings } = await useFetch(`http://ergast.com/api/f1/current/dri
     )[0];
   },
 });
-
-console.log(standings);
 </script>
