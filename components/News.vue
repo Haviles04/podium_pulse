@@ -19,9 +19,10 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
 const yesterday = new Date(Date.now() - 86400000).toLocaleDateString();
 const { data: news } = await useFetch(
-  `https://newsapi.org/v2/everything?language=en&apiKey=061e9934238d4732bcfcd5d21402ecec&q=F1 Race&from=${yesterday}`,
+  `https://newsapi.org/v2/everything?language=en&apiKey=${config.public.newsApiKey}&q=F1 Race&from=${yesterday}`,
   {
     transform: (data) => {
       return data.articles.filter(({ title }) => title !== '[Removed]').slice(0, 5);
