@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="m-auto mt-10 max-w-[1200px] rounded-xl bg-secondary px-10 pb-10 text-center">
+    <section class="m-auto mt-10 max-w-[1200px] rounded-xl bg-secondary pb-10 text-center md:px-10">
       <result-select />
       <div v-if="!data"><h2>No data available yet</h2></div>
       <div v-else>
