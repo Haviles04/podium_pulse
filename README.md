@@ -8,7 +8,7 @@ A Formula 1 Informational web application displaying schedule, racetimes, race r
 
 1. Clone repository locally
 2. Run npm run dev
-   3.Open http://localhost:3000 in your browser
+3. Open http://localhost:3000 in your browser
 
 ## TechStack
 
