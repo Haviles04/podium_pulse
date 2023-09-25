@@ -5,7 +5,7 @@
     <ul class="list-none flex gap-4 justify-between flex-wrap justify-center">
       <li v-for="data in listData">
         <nuxt-link :to="listLink(data)">
-          {{ data.season || data.givenName + " " + data?.familyName }}
+          {{ data.season || data.givenName + ' ' + data?.familyName }}
         </nuxt-link>
       </li>
     </ul>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-const { listData } = defineProps(["listData"]);
+const { listData } = defineProps(['listData']);
 
 const listLink = (data) => {
   if (data.season) {

@@ -61,7 +61,7 @@ const years = getLast10Seasons();
 const currentYear = new Date().getFullYear();
 const selectedSeason = ref(season || currentYear);
 const selectedRound = ref(round || 1);
-const selectedSession = ref(session || "race");
+const selectedSession = ref(session || 'race');
 const loading = ref(false);
 
 const handleSeasonChange = () => {
@@ -74,21 +74,16 @@ const handleSeasonChange = () => {
 const handleRoundChange = () => {
   loading.value = true;
   router.push({
-    path: `/results/${selectedSeason.value}/${selectedRound.value || 1}/${
-      selectedSession.value || "race"
-    }`,
+    path: `/results/${selectedSeason.value}/${selectedRound.value || 1}/${selectedSession.value || 'race'}`,
   });
 };
 
 // SSR
-const { data } = await useFetch(
-  `http://ergast.com/api/f1/${selectedSeason.value}.json`,
-  {
-    transform: (data) => {
-      return data.MRData.RaceTable.Races.filter(
-        ({ date }) => Date.now() >= Date.parse(date)
-      ).map(({ raceName, round }) => ({ raceName, round }));
-    },
-  }
-);
+const { data } = await useFetch(`http://ergast.com/api/f1/${selectedSeason.value}.json`, {
+  transform: (data) => {
+    return data.MRData.RaceTable.Races.filter(({ date }) => Date.now() >= Date.parse(date)).map(
+      ({ raceName, round }) => ({ raceName, round }),
+    );
+  },
+});
 </script>

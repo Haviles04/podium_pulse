@@ -1,13 +1,9 @@
 <template>
-  <section
-    class="max-w-screen-lg m-auto text-center rounded-lg pb-10 scroll-auto"
-  >
+  <section class="max-w-screen-lg m-auto text-center rounded-lg pb-10 scroll-auto">
     <h1 class="font-racing text-6xl mt-10">Schedule</h1>
     <div class="rounded-lg overflow-x-auto mt-10">
       <table class="m-auto w-full">
-        <thead
-          class="table-auto border-2 divide-y divide-primary rounded w-full text-center"
-        >
+        <thead class="table-auto border-2 divide-y divide-primary rounded w-full text-center">
           <tr>
             <th class="hidden md:block">Round</th>
             <th>Date</th>
@@ -24,14 +20,11 @@
 </template>
 
 <script setup>
-const { data, error } = await useFetch(
-  `http://ergast.com/api/f1/current.json`,
-  {
-    transform: (data) => {
-      return data.MRData.RaceTable.Races;
-    },
-  }
-);
+const { data, error } = await useFetch(`http://ergast.com/api/f1/current.json`, {
+  transform: (data) => {
+    return data.MRData.RaceTable.Races;
+  },
+});
 
 if (error.value) {
   throw createError({

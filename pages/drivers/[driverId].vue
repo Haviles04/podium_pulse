@@ -10,17 +10,12 @@
           {{ driver.permanentNumber }}
         </p>
         <p class="text-2xl inline-block">
-          {{ driver.givenName + " " + driver.familyName }}
+          {{ driver.givenName + ' ' + driver.familyName }}
         </p>
-        <img
-          class="block m-auto"
-          :src="`https://flagsapi.com/${countryCode}/flat/48.png`"
-        />
+        <img class="block m-auto" :src="`https://flagsapi.com/${countryCode}/flat/48.png`" />
         <p>Nationality: {{ driver.nationality }}</p>
         <p>DOB: {{ driver.dateOfBirth }}</p>
-        <div
-          class="max-w-fit flex m-auto mt-4 justify-center [&>span]:p-4 [&>b]:block"
-        >
+        <div class="max-w-fit flex m-auto mt-4 justify-center [&>span]:p-4 [&>b]:block">
           <span
             >Points
             <b class="block">{{ standings.points }}</b>
@@ -42,14 +37,11 @@ const { driverId } = useRoute().params;
 const currentYear = new Date().getFullYear();
 const imageExist = ref(true);
 
-const { data: driver } = await useFetch(
-  `http://ergast.com/api/f1/drivers/${driverId}.json`,
-  {
-    transform: (data) => {
-      return data.MRData.DriverTable.Drivers[0];
-    },
-  }
-);
+const { data: driver } = await useFetch(`http://ergast.com/api/f1/drivers/${driverId}.json`, {
+  transform: (data) => {
+    return data.MRData.DriverTable.Drivers[0];
+  },
+});
 if (!driver.value) {
   throw createError({
     statusCode: error.value.statusCode,
@@ -60,16 +52,13 @@ if (!driver.value) {
 const countryCode = getCountryCode(driver.value.nationality);
 const imgSource = `/images/drivers/${driver.value.familyName.toLowerCase()}.png`;
 
-const { data: standings } = await useFetch(
-  `http://ergast.com/api/f1/current/driverStandings.json`,
-  {
-    transform: (data) => {
-      return data.MRData.StandingsTable.StandingsLists[0].DriverStandings.filter(
-        ({ Driver }) => driverId === Driver.driverId
-      )[0];
-    },
-  }
-);
+const { data: standings } = await useFetch(`http://ergast.com/api/f1/current/driverStandings.json`, {
+  transform: (data) => {
+    return data.MRData.StandingsTable.StandingsLists[0].DriverStandings.filter(
+      ({ Driver }) => driverId === Driver.driverId,
+    )[0];
+  },
+});
 
 console.log(standings);
 </script>

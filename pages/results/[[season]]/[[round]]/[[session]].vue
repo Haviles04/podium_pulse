@@ -11,11 +11,7 @@
           {{ data.raceName }}
         </h1>
         <h2 class="mb-6 text-xl md:text-2xl">{{ data.Circuit.circuitName }}</h2>
-        <race-results-table
-          :key="data"
-          :results="data"
-          :sessionType="session || 'race'"
-        />
+        <race-results-table :key="data" :results="data" :sessionType="session || 'race'" />
       </div>
     </section>
   </main>
@@ -27,8 +23,8 @@ const { season, round, session } = route.params;
 const showOnlySeason = season && !round && !session;
 const showLatest = !season && !round && !session;
 
-const apiEndpoint = "http://ergast.com/api/f1";
-const sessionType = session === "qualifying" ? session : "results";
+const apiEndpoint = 'http://ergast.com/api/f1';
+const sessionType = session === 'qualifying' ? session : 'results';
 const slug = showOnlySeason
   ? season
   : showLatest
@@ -37,16 +33,14 @@ const slug = showOnlySeason
 
 const { data } = await useFetch(`${apiEndpoint}/${slug}.json`, {
   transform: (data) => {
-    return showOnlySeason
-      ? data.MRData.RaceTable.Races
-      : data.MRData.RaceTable.Races[0];
+    return showOnlySeason ? data.MRData.RaceTable.Races : data.MRData.RaceTable.Races[0];
   },
 });
 
 if (!data.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: "Page not found!",
+    statusMessage: 'Page not found!',
     fatal: true,
   });
 }

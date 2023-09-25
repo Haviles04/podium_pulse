@@ -8,16 +8,13 @@
     <td :class="hasFastestLap">
       <nuxt-Link :to="`/drivers/${driver.Driver.driverId}`"
         ><p class="hidden md:inline hover:text-primary">
-          {{ driver.Driver.givenName + " " + driver.Driver.familyName }}
+          {{ driver.Driver.givenName + ' ' + driver.Driver.familyName }}
         </p>
         <p class="inline md:hidden">
           {{ driver.Driver.familyName.slice(0, 3) }}
         </p>
       </nuxt-Link>
-      <img
-        class="hidden md:inline ml-2"
-        :src="`https://flagsapi.com/${countryCode}/flat/24.png`"
-      />
+      <img class="hidden md:inline ml-2" :src="`https://flagsapi.com/${countryCode}/flat/24.png`" />
     </td>
 
     <td class="hidden md:inline">{{ driver.Constructor.name }}</td>
@@ -31,14 +28,13 @@
 </template>
 
 <script setup>
-const { driver, sessionType } = defineProps(["driver", "sessionType"]);
+const { driver, sessionType } = defineProps(['driver', 'sessionType']);
 
-const hasFastestLap = driver.FastestLap?.rank === "1" ? "text-fastest" : null;
+const hasFastestLap = driver.FastestLap?.rank === '1' ? 'text-fastest' : null;
 
 const countryCode = getCountryCode(driver.Driver.nationality);
 
-const showQuali = sessionType === "qualifying";
+const showQuali = sessionType === 'qualifying';
 
-const driverTime =
-  driver.status === "Finished" ? driver.Time.time : driver.status;
+const driverTime = driver.status === 'Finished' ? driver.Time.time : driver.status;
 </script>
