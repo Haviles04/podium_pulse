@@ -36,9 +36,16 @@ const setSessionType = (type) => {
 };
 
 //Get Season data
-const { data: seasonData } = await useFetch('http://ergast.com/api/f1/seasons.json?offset=63');
-const seasons = seasonData.value.MRData.SeasonTable.Seasons;
+const { data: seasons } = await useFetch('http://ergast.com/api/f1/seasons.json?offset=63', {
+  transform: (data) => {
+    return data.MRData.SeasonTable.Seasons;
+  },
+});
+
 //Get Driver data
-const { data: driverData } = await useFetch('https://ergast.com/api/f1/current/drivers.json');
-const drivers = driverData.value.MRData.DriverTable.Drivers;
+const { data: drivers } = await useFetch('https://ergast.com/api/f1/current/drivers.json', {
+  transform: (data) => {
+    return data.MRData.DriverTable.Drivers;
+  },
+});
 </script>
