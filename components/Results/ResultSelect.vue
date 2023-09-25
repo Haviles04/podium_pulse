@@ -1,19 +1,19 @@
 <template>
   <div
     v-if="loading"
-    class="absolute flex justify-center items-center w-full h-[calc(100vh-60px)] bg-background opacity-50"
+    class="absolute flex h-[calc(100vh-60px)] w-full items-center justify-center bg-background opacity-50"
   >
     <Loader />
   </div>
-  <form class="pt-10 [&>*]:m-2 flex-column md:flex justify-center items-start">
-    <label class="text-primary text-center" for="year"
-      ><span class="text-2xl text-light hidden md:block">Year</span>
+  <form class="flex-column items-start justify-center pt-10 md:flex [&>*]:m-2">
+    <label class="text-center text-primary" for="year"
+      ><span class="hidden text-2xl text-light md:block">Year</span>
       <select
         v-model="selectedSeason"
         name="year"
         id="yearSelect"
         size="1"
-        class="bg-background text-primary block no-scrollbar w-full md:w-fit m-auto md:m-1 border-2 rounded-xl p-4 border-light"
+        class="no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background p-4 text-primary md:m-1 md:w-fit"
         @change="handleSeasonChange"
       >
         <option disabled selected>Year</option>
@@ -21,13 +21,13 @@
       </select>
     </label>
     <label class="text-primary" for="round"
-      ><span class="text-2xl text-light hidden md:block">Round</span>
+      ><span class="hidden text-2xl text-light md:block">Round</span>
       <select
         v-model="selectedRound"
         name="round"
         id="roundSelect"
         size="1"
-        class="bg-background text-primary block no-scrollbar w-full md:w-fit m-auto md:m-1 border-2 rounded-xl p-4 border-light"
+        class="no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background p-4 text-primary md:m-1 md:w-fit"
         @change="handleRoundChange"
       >
         <option disabled selected>Round</option>
@@ -37,13 +37,13 @@
       </select>
     </label>
     <label class="text-primary" for="session"
-      ><span class="text-2xl text-light hidden md:block">Session</span>
+      ><span class="hidden text-2xl text-light md:block">Session</span>
       <select
         v-model="selectedSession"
         name="session"
         id="sessionSelect"
         :disabled="!selectedRound"
-        class="bg-background text-primary block no-scrollbar w-full md:w-fit m-auto md:m-1 border-2 rounded-xl p-4 border-light"
+        class="no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background p-4 text-primary md:m-1 md:w-fit"
         @change="handleRoundChange"
       >
         <option selected disabled>Session</option>

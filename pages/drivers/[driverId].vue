@@ -1,26 +1,26 @@
 <template>
   <section>
     <div class="text-center">
-      <h2 class="text-6xl font-racing my-6">Driver Profile</h2>
-      <div class="max-w-[800px] h-fit m-auto">
+      <h2 class="my-6 font-racing text-6xl">Driver Profile</h2>
+      <div class="m-auto h-fit max-w-[800px]">
         <img v-if="imageExist" :src="imgSource" @error="imageExist = false" />
       </div>
-      <div class="bg-secondary max-w-[800px] m-auto">
-        <p class="font-racing text-4xl inline-block mr-4">
+      <div class="m-auto max-w-[800px] bg-secondary">
+        <p class="mr-4 inline-block font-racing text-4xl">
           {{ driver.permanentNumber }}
         </p>
-        <p class="text-2xl inline-block">
+        <p class="inline-block text-2xl">
           {{ driver.givenName + ' ' + driver.familyName }}
         </p>
-        <img class="block m-auto" :src="`https://flagsapi.com/${countryCode}/flat/48.png`" />
+        <img class="m-auto block" :src="`https://flagsapi.com/${countryCode}/flat/48.png`" />
         <p>Nationality: {{ driver.nationality }}</p>
         <p>DOB: {{ driver.dateOfBirth }}</p>
-        <div class="max-w-fit flex m-auto mt-4 justify-center [&>span]:p-4 [&>b]:block">
+        <div class="m-auto mt-4 flex max-w-fit justify-center [&>b]:block [&>span]:p-4">
           <span
             >Points
             <b class="block">{{ standings.points }}</b>
           </span>
-          <span class="border-r-2 border-l-2 border-primary">
+          <span class="border-l-2 border-r-2 border-primary">
             Position <b class="block">{{ standings.position }}</b>
           </span>
           <span>

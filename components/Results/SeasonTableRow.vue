@@ -2,7 +2,7 @@
   <tr>
     <td class="hidden md:block">{{ race.round }}</td>
     <td>{{ race.date }}</td>
-    <td class="hover:text-fastest hover:cursor-pointer">
+    <td class="hover:cursor-pointer hover:text-fastest">
       <NuxtLink :to="`/results/${race.season}/${race.round}/race`">{{ race.raceName }}</NuxtLink>
     </td>
 

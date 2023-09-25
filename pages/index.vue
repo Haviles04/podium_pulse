@@ -1,22 +1,26 @@
 <template>
   <main>
     <div
-      class="bg-[url('/f1.jpg')] bg-no-repeat bg-center bg-fixed flex justify-center items-center flex-col pt-20 font-racing italic h-[75vh] md:h-[50vh] text-center"
+      class="flex h-[75vh] flex-col items-center justify-center bg-[url('/f1.jpg')] bg-fixed bg-center bg-no-repeat pt-20 text-center font-racing italic md:h-[50vh]"
     >
-      <h1 class="text-6xl md:text-8xl bg-secondary rounded-xl p-4">Podium Pulse</h1>
-      <p class="text-2xl md:text-4xl bg-secondary border-b-2 border-primary rounded-xl p-4">
+      <h1 class="rounded-xl bg-secondary p-4 text-6xl md:text-8xl">Podium Pulse</h1>
+      <p class="rounded-xl border-b-2 border-primary bg-secondary p-4 text-2xl md:text-4xl">
         Fueling Your F1 Passion!
       </p>
     </div>
-    <h2 class="text-center text-4xl md:text-7xl font-racing italic text-bold mt-6">Recent News</h2>
+    <h2
+      class="text-bold m-auto mt-6 w-fit border-b-2 border-primary text-center font-racing text-4xl italic md:text-7xl"
+    >
+      Recent News
+    </h2>
     <News />
-    <div class="bg-secondary mt-10 p-2">
+    <div class="mt-10 bg-secondary p-2">
       <h2
-        class="text-4xl md:text-7xl text-center text-bold italic font-racing mt-10 border-b-2 border-primary w-fit m-auto"
+        class="text-bold m-auto mt-10 w-fit border-b-2 border-primary text-center font-racing text-4xl italic md:text-7xl"
       >
         Last Race
       </h2>
-      <h3 class="text-2xl md:text-4xl text-center text-bold italic font-racing m-10">
+      <h3 class="text-bold m-10 text-center font-racing text-2xl italic md:text-4xl">
         {{ lastRace.raceName }}
       </h3>
       <race-results-table :results="lastRace" sessionType="race" />

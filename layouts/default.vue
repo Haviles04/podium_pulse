@@ -1,10 +1,8 @@
 <template>
-  <nav class="min-h-[60px] bg-secondary border-b-4 border-primary">
-    <div class="max-w-[1000px] m-auto flex items-center justify-between">
+  <nav class="min-h-[60px] border-b-4 border-primary bg-secondary">
+    <div class="m-auto flex max-w-[1000px] items-center justify-between">
       <nuxt-link to="/" class="mx-6">Podium Pulse</nuxt-link>
-      <ul
-        class="hidden md:block h-full [&>*]:inline-block [&>*]:px-8 [&>*]:py-4"
-      >
+      <ul class="hidden h-full md:block [&>*]:inline-block [&>*]:px-8 [&>*]:py-4">
         <li class="h-full hover:bg-light hover:text-background">
           <nuxt-link to="/schedule">Schedule</nuxt-link>
         </li>
@@ -40,20 +38,16 @@
 </template>
 
 <script setup>
-const listTypes = ref("");
+const listTypes = ref('');
 
 const setSessionType = (type) => {
   listTypes.value = type;
 };
 
 //Get Season data
-const { data: seasonData } = await useFetch(
-  "http://ergast.com/api/f1/seasons.json?offset=63"
-);
+const { data: seasonData } = await useFetch('http://ergast.com/api/f1/seasons.json?offset=63');
 const seasons = seasonData.value.MRData.SeasonTable.Seasons;
 //Get Driver data
-const { data: driverData } = await useFetch(
-  "https://ergast.com/api/f1/current/drivers.json"
-);
+const { data: driverData } = await useFetch('https://ergast.com/api/f1/current/drivers.json');
 const drivers = driverData.value.MRData.DriverTable.Drivers;
 </script>

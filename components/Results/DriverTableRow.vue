@@ -7,14 +7,14 @@
     </td>
     <td :class="hasFastestLap">
       <nuxt-Link :to="`/drivers/${driver.Driver.driverId}`"
-        ><p class="hidden md:inline hover:text-primary">
+        ><p class="hidden hover:text-primary md:inline">
           {{ driver.Driver.givenName + ' ' + driver.Driver.familyName }}
         </p>
         <p class="inline md:hidden">
           {{ driver.Driver.familyName.slice(0, 3) }}
         </p>
       </nuxt-Link>
-      <img class="hidden md:inline ml-2" :src="`https://flagsapi.com/${countryCode}/flat/24.png`" />
+      <img class="ml-2 hidden md:inline" :src="`https://flagsapi.com/${countryCode}/flat/24.png`" />
     </td>
 
     <td class="hidden md:inline">{{ driver.Constructor.name }}</td>
