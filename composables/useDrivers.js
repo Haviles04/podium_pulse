@@ -6,7 +6,16 @@ export const useDrivers = () => {
         return data.MRData.DriverTable.Drivers;
       },
     });
+
     drivers.value = driverData.value;
+
+    if (error.value) {
+      throw createError({
+        statusCode: error.value.statusCode,
+        statusMessage: error.value.message,
+        fatal: true,
+      });
+    }
   }
   return { drivers };
 };
