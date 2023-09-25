@@ -16,7 +16,8 @@
         <img class="m-auto block" :src="`https://flagsapi.com/${countryCode}/flat/48.png`" />
         <p>Nationality: {{ driver.nationality }}</p>
         <p>DOB: {{ driver.dateOfBirth }}</p>
-        <div class="m-auto mt-4 flex max-w-fit justify-center [&>b]:block [&>span]:p-4">
+        <h3 class="mt-4">Current WDC</h3>
+        <div class="m-auto flex max-w-fit justify-center [&>b]:block [&>span]:p-4">
           <span
             >Points
             <b class="block">{{ standings.points }}</b>
