@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-6 my-4 w-full rounded-xl border-2 border-border bg-card">
+  <div class="my-4 w-full rounded-xl border-2 border-border bg-card">
     <div class="w-full border-b-2 border-border px-4">
       <h2 class="text-xl">{{ race.raceName }}</h2>
       <h3>{{ race.Circuit.circuitName }}</h3>
