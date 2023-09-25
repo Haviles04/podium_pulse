@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-const lastRace = await fetchSessionInfo('http://ergast.com/api/f1/current/last/results.json');
+const lastRace = await fetchSessionInfo('https://ergast.com/api/f1/current/last/results.json');
 </script>
 
 <style scoped>

@@ -22,7 +22,7 @@
 <script setup>
 const { round, season } = defineProps(['round', 'season']);
 
-const { data } = await useFetch(`http://ergast.com/api/f1/${season}/${round}/results.json`, {
+const { data } = await useFetch(`https://ergast.com/api/f1/${season}/${round}/results.json`, {
   transform: (data) => {
     return data.MRData.RaceTable.Races[0].Results.splice(0, 3);
   },

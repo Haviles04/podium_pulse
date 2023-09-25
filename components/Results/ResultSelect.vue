@@ -82,7 +82,7 @@ const handleRoundChange = () => {
 };
 
 // SSR
-const { data } = await useFetch(`http://ergast.com/api/f1/${selectedSeason.value}.json`, {
+const { data } = await useFetch(`https://ergast.com/api/f1/${selectedSeason.value}.json`, {
   transform: (data) => {
     return data.MRData.RaceTable.Races.filter(({ date }) => Date.now() >= Date.parse(date)).map(
       ({ raceName, round }) => ({ raceName, round }),
