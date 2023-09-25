@@ -8,14 +8,6 @@ export const useDrivers = () => {
     });
 
     drivers.value = driverData.value;
-
-    if (error.value) {
-      throw createError({
-        statusCode: error.value.statusCode,
-        statusMessage: error.value.message,
-        fatal: true,
-      });
-    }
   }
   return { drivers };
 };
