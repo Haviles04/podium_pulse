@@ -14,7 +14,11 @@
           {{ driver.Driver.familyName.slice(0, 3) }}
         </p>
       </nuxt-Link>
-      <img class="ml-2 hidden md:inline" :src="`https://flagsapi.com/${countryCode}/flat/24.png`" />
+      <img
+        class="ml-2 hidden md:inline"
+        :src="`https://flagsapi.com/${countryCode}/flat/24.png`"
+        :alt="`${driver.Driver.nationality} flag`"
+      />
     </td>
 
     <td class="hidden md:inline">{{ driver.Constructor.name }}</td>
