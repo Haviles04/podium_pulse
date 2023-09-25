@@ -11,8 +11,10 @@
         </li>
       </label>
     </ul>
-    <NuxtLink :to="`results/${season}/${round}/race`" class="text-primary hover:text-fastest"
-      >Full Standings >>>
+    <NuxtLink
+      :to="`results/${season}/${round}/race`"
+      class="flex items-center justify-center py-2 text-primary hover:text-fastest"
+      >Full Standings <i class="material-icons">chevron_right</i>
     </NuxtLink>
   </div>
 </template>
