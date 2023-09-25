@@ -9,4 +9,9 @@
 
 <script setup>
 const { drivers, errors } = useDrivers();
+
+useHead({
+  title: 'Podium Pulse | Drivers',
+  meta: 'Podium Pulse formula 1 driver information',
+});
 </script>

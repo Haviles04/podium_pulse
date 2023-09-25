@@ -23,4 +23,9 @@ if (error.value) {
     fatal: true,
   });
 }
+
+useHead({
+  title: 'Podium Pulse | Schedule',
+  meta: 'Podium pulse formula 1 schedule information',
+});
 </script>

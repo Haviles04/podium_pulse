@@ -47,4 +47,9 @@ if (error.value) {
     fatal: true,
   });
 }
+
+useHead({
+  title: 'Podium Pulse | Results',
+  meta: `Podium pulse formula 1 ${season ?? null} season Results`,
+});
 </script>
