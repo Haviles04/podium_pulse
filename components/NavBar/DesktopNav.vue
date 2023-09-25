@@ -11,6 +11,7 @@
       <nav-drop-down
         v-if="listTypes === 'seasons'"
         :listData="seasons"
+        :error="seasonsError"
         class="hidden group-hover/seasons:block"
       />
     </li>
@@ -22,6 +23,7 @@
       <nav-drop-down
         v-if="listTypes === 'drivers'"
         :listData="drivers"
+        :error="driversError"
         class="hidden group-hover/drivers:block"
       />
     </li>
@@ -35,6 +37,6 @@ const setSessionType = (type) => {
   listTypes.value = type;
 };
 
-const { seasons } = useSeasons();
-const { drivers } = useDrivers();
+const { seasons, errors: seasonsError } = useSeasons();
+const { drivers, errors: driversError } = useDrivers();
 </script>
