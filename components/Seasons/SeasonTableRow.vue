@@ -12,6 +12,5 @@
 
 <script setup>
 const { race } = defineProps(['race']);
-
 const time = getLocalTimes(race.date, race.time);
 </script>

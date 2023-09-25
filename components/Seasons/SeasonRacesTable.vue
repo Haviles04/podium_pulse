@@ -4,8 +4,8 @@
       <thead>
         <tr>
           <th class="hidden md:block">Round</th>
-          <th>Race</th>
           <th>Date</th>
+          <th>Race</th>
           <th>Time</th>
         </tr>
       </thead>
