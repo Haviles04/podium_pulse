@@ -1,7 +1,7 @@
 <template>
   <div
     @click="router.push(link)"
-    class="m-auto my-2 w-fit rounded-xl bg-card p-4 text-center hover:cursor-pointer"
+    class="m-auto my-2 w-fit rounded-xl border-2 border-border bg-card p-4 text-center hover:cursor-pointer"
   >
     <nuxt-link :to="link"
       ><h2 class="text-2xl">{{ driver.givenName + ' ' + driver.familyName }}</h2></nuxt-link

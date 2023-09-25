@@ -1,5 +1,5 @@
 <template>
-  <div class="m-auto max-w-[1000px] overflow-hidden rounded-xl border-2">
+  <div class="m-auto max-w-[1000px] overflow-hidden rounded-xl border-2 border-border">
     <table class="w-full table-auto divide-y divide-primary bg-card text-center">
       <thead>
         <tr>

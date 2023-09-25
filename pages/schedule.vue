@@ -1,9 +1,9 @@
 <template>
   <section
-    class="m-auto min-w-[300px] max-w-[600px] scroll-auto rounded-lg bg-secondary p-10 pb-10 text-center"
+    class="m-auto mt-10 min-w-[300px] max-w-[800px] scroll-auto rounded-lg bg-secondary p-10 pb-10 text-center"
   >
     <h1 class="mt-10 font-racing text-4xl">Race Schedule</h1>
-    <div class="mt-10 flex flex-col items-center justify-center rounded-lg">
+    <div class="mt-6 grid grid-cols-1 gap-5 rounded-lg md:grid-cols-2">
       <schedule-card v-for="race in data" :race="race" />
     </div>
   </section>

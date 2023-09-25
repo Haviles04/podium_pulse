@@ -1,11 +1,11 @@
 <template>
   <section>
-    <div class="text-center">
+    <div class="m-auto mt-10 w-fit rounded-xl bg-secondary p-8 text-center">
       <h2 class="my-6 font-racing text-6xl">Driver Profile</h2>
       <div class="m-auto h-fit max-w-[800px]">
         <img v-if="imageExist" :src="imgSource" @error="imageExist = false" />
       </div>
-      <div class="m-auto max-w-[800px] bg-secondary">
+      <div class="m-auto max-w-[800px] rounded-xl bg-card">
         <p class="mr-4 inline-block font-racing text-4xl">
           {{ driver.permanentNumber }}
         </p>

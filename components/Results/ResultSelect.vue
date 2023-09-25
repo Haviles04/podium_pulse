@@ -65,7 +65,7 @@ const selectedSession = ref(session || 'race');
 const loading = ref(false);
 
 const selectClass =
-  'no-scrollbar m-auto block w-full rounded-xl border-2 border-light bg-background bg-card p-4 text-primary md:m-1 md:w-fit';
+  'no-scrollbar m-auto block w-full rounded-xl border-2 border-border bg-background bg-card p-4 text-primary md:m-1 md:w-fit';
 
 const handleSeasonChange = () => {
   loading.value = true;

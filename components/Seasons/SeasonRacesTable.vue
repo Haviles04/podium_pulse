@@ -1,5 +1,5 @@
 <template>
-  <div class="m-auto w-fit rounded-xl border-2">
+  <div class="m-auto w-fit rounded-xl border-2 border-border">
     <table class="m-auto divide-y divide-primary rounded-xl bg-card text-center md:min-w-[600px]">
       <thead>
         <tr>
