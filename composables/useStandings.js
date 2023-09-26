@@ -20,7 +20,10 @@ export const useStandings = (slug) => {
     loading.value = false;
   };
 
-  watchEffect(() => fetchData());
+  watchEffect(() => {
+    standingsData.value = null;
+    fetchData();
+  });
 
   return { standingsData, loading, error };
 };
