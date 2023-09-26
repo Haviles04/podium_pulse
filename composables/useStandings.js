@@ -10,7 +10,6 @@ export const useStandings = async (slug) => {
         transform: (data) => {
           return data.MRData.StandingsTable.StandingsLists[0][`${toValue(slug)}Standings`];
         },
-        lazy: true,
       },
     );
     if (standingsError.value) {
