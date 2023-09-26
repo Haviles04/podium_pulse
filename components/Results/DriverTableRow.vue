@@ -1,8 +1,8 @@
 <template>
   <tr>
-    <td>{{ driver.position }}</td>
-    <td class="hidden md:inline">{{ driver.grid || driver.position }}</td>
-    <td class="hidden md:inline">
+    <td v-if="!showQuali">{{ driver.position }}</td>
+    <td class="hidden md:table-cell">{{ driver.grid || driver.position }}</td>
+    <td class="hidden md:table-cell">
       {{ driver.number }}
     </td>
     <td :class="hasFastestLap">
@@ -10,7 +10,7 @@
         ><p class="hidden hover:text-primary md:inline">
           {{ driver.Driver.givenName + ' ' + driver.Driver.familyName }}
         </p>
-        <p class="inline md:hidden">
+        <p class="table-cell md:hidden">
           {{ driver.Driver.familyName.slice(0, 3) }}
         </p>
       </nuxt-Link>
@@ -21,7 +21,7 @@
       />
     </td>
 
-    <td class="hidden md:inline">{{ driver.Constructor.name }}</td>
+    <td class="hidden md:table-cell">{{ driver.Constructor.name }}</td>
     <td v-if="!showQuali">{{ driverTime }}</td>
     <td v-else-if="driver.Q3">{{ driver.Q3 }}</td>
     <td v-else-if="driver.Q2">{{ driver.Q2 }}</td>

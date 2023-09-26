@@ -3,11 +3,11 @@
     <table class="w-full table-auto divide-y divide-primary bg-card text-center">
       <thead>
         <tr>
-          <th>Position</th>
-          <th class="hidden md:inline">Grid</th>
-          <th class="hidden md:inline">Number</th>
+          <th v-if="sessionType !== 'qualifying'">Position</th>
+          <th class="hidden md:table-cell">Grid</th>
+          <th class="hidden md:table-cell">Number</th>
           <th>Name</th>
-          <th class="hidden md:inline">Team</th>
+          <th class="hidden md:table-cell">Team</th>
           <th>Time</th>
           <th v-if="sessionType !== 'qualifying'">Points</th>
         </tr>
