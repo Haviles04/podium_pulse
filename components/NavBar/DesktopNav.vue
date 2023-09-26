@@ -37,6 +37,6 @@ const setSessionType = (type) => {
   listTypes.value = type;
 };
 
-const { seasons, errors: seasonsError } = useSeasons();
-const { drivers, errors: driversError } = useDrivers();
+const { seasons, errors: seasonsError } = await useSeasons();
+const { drivers, errors: driversError } = await useDrivers();
 </script>

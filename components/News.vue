@@ -19,5 +19,5 @@
 </template>
 
 <script setup>
-const { news } = useNews();
+const { news } = await useNews();
 </script>

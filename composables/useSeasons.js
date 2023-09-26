@@ -1,9 +1,9 @@
-export const useSeasons = () => {
+export const useSeasons = async () => {
   const seasons = ref(null);
   const errors = ref(null);
 
   if (!seasons.value) {
-    const { data: seasonData, error } = useFetch('https://ergast.com/api/f1/seasons.json?offset=63', {
+    const { data: seasonData, error } = await useFetch('https://ergast.com/api/f1/seasons.json?offset=63', {
       transform: (data) => {
         return data.MRData.SeasonTable.Seasons;
       },

@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-const { drivers, errors } = useDrivers();
+const { drivers, errors } = await useDrivers();
 
 useHead({
   title: 'Podium Pulse | Drivers',
