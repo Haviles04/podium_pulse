@@ -1,6 +1,9 @@
 <template>
   <ul class="[&>*]:px-8 [&>*]:py-4">
     <li class="h-full hover:bg-light hover:text-background">
+      <nuxt-link to="/standings">Standings</nuxt-link>
+    </li>
+    <li class="h-full hover:bg-light hover:text-background">
       <nuxt-link to="/schedule">Schedule</nuxt-link>
     </li>
     <li

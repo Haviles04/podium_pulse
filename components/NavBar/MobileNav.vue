@@ -3,7 +3,7 @@
     <button class="px-7 py-4" @click="showLinks = !showLinks">Menu</button>
     <div
       v-if="showLinks"
-      class="absolute left-0 top-14 mr-10 w-screen bg-card text-end [&>ul>li]:border-b-2 [&>ul>li]:p-4"
+      class="absolute left-0 top-14 mr-10 w-screen bg-card text-end [&>ul>li]:border-b-2 [&>ul>li]:border-border [&>ul>li]:p-4"
     >
       <ul @click="showLinks = !showLinks">
         <li>
@@ -14,6 +14,9 @@
         </li>
         <li>
           <nuxt-link to="/schedule">Schedule</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/standings">Standings</nuxt-link>
         </li>
       </ul>
     </div>
