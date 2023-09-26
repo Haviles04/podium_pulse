@@ -11,7 +11,7 @@
             Constructors
           </button>
         </div>
-        <standings-table :wdc="wdc" :data="standingsData" :error="error" />
+        <standings-table :wdc="wdc" :data="standingsData" :error="error" :loading="loading" />
       </div>
     </section>
   </main>
@@ -23,5 +23,5 @@ const slug = computed(() => {
   return wdc.value === true ? 'Driver' : 'Constructor';
 });
 
-const { standingsData, error } = await useStandings(slug);
+const { standingsData, loading, error } = await useStandings(slug);
 </script>

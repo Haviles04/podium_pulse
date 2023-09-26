@@ -9,14 +9,14 @@
           <th>Points</th>
         </tr>
       </thead>
-      <tbody v-if="error">
-        <td colspan="3" class="p-6">Error loading Data</td>
-      </tbody>
-      <tbody v-else-if="data">
+      <tbody v-if="data">
         <driver-standings-row v-if="data[0].Driver" v-for="driver in data" :driver="driver" />
         <constructor-standings-row v-else-if="data[0].Constructor" v-for="team in data" :team="team" />
       </tbody>
-      <tbody v-else>
+      <tbody v-else-if="error">
+        <td colspan="3" class="p-6">Error loading Data</td>
+      </tbody>
+      <tbody v-else-if="loading">
         <td colspan="3" class="p-10">
           <Loader class="inline-block" />
         </td>
@@ -26,5 +26,5 @@
 </template>
 
 <script setup>
-const { wdc, data, error } = defineProps(['wdc', 'data', 'error']);
+const { wdc, data, error, loading } = defineProps(['wdc', 'data', 'error', 'loading']);
 </script>
