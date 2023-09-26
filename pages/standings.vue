@@ -23,5 +23,5 @@ const slug = computed(() => {
   return wdc.value === true ? 'Driver' : 'Constructor';
 });
 
-const { standingsData, loading, error } = await useStandings(slug);
+const { standingsData, loading, error } = useStandings(slug);
 </script>

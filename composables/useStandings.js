@@ -1,9 +1,10 @@
-export const useStandings = async (slug) => {
+export const useStandings = (slug) => {
   const standingsData = ref(null);
-  const loading = ref(true);
+  const loading = ref(false);
   const error = ref(null);
 
   const fetchData = async () => {
+    loading.value = true;
     const { data, error: standingsError } = await useFetch(
       `https://ergast.com/api/f1/current/${toValue(slug)}Standings.json`,
       {
