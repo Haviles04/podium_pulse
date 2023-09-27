@@ -15,7 +15,10 @@ export default defineNuxtConfig({
     head: {
       title: 'Podium Pulse | F1',
       meta: [{ name: 'description', content: 'Everything about formula 1' }],
-      link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }],
+      link: [
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+        { rel: 'icon', type: 'image/x-icon', href: '/race.png' },
+      ],
     },
   },
   runtimeConfig: {
