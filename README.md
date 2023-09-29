@@ -18,10 +18,10 @@ A Formula 1 Informational web application displaying schedule, racetimes, race r
 ## Data
 
 Formula 1 Data provided by the Ergast API
-[Ergast](https://ergast.com/mrd/)
+[Ergast] (https://ergast.com/mrd/)
 
 News Articles provided by newscatcher API
-[newscatcher]([https://newsapi.org/](https://www.newscatcherapi.com/))
+[newscatcher] ([https://newsapi.org/](https://www.newscatcherapi.com/))
 
 ## Live Site
 
