@@ -21,7 +21,7 @@ Formula 1 Data provided by the Ergast API
 [Ergast] (https://ergast.com/mrd/)
 
 News Articles provided by newscatcher API
-[newscatcher] ([https://newsapi.org/](https://www.newscatcherapi.com/))
+[newscatcher](https://www.newscatcherapi.com/)
 
 ## Live Site
 
