@@ -1,8 +1,8 @@
 <template>
   <div class="m-auto max-w-[1000px] overflow-hidden rounded-xl border-2 border-border">
-    <table class="w-full table-auto divide-y divide-primary bg-card text-center">
+    <table class="text-md w-full table-auto divide-y divide-primary bg-card text-center">
       <thead>
-        <tr>
+        <tr class="[&>*]:py-4">
           <th v-if="sessionType !== 'qualifying'">Position</th>
           <th class="hidden md:table-cell">Grid</th>
           <th class="hidden md:table-cell">Number</th>
@@ -30,6 +30,7 @@
         />
       </tbody>
     </table>
+    <p class="py-2"><span class="text-2xl text-fastest"> __ </span>Denotes fastest lap of race</p>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr class="[&>*]:py-4">
     <td v-if="!showQuali">{{ driver.position }}</td>
     <td class="hidden md:table-cell">{{ driver.grid || driver.position }}</td>
     <td class="hidden md:table-cell">
@@ -34,7 +34,8 @@
 <script setup>
 const { driver, sessionType } = defineProps(['driver', 'sessionType']);
 
-const hasFastestLap = driver.FastestLap?.rank === '1' ? 'text-fastest' : null;
+const hasFastestLap =
+  driver.FastestLap?.rank === '1' ? 'underline decoration-fastest decoration-2 underline-offset-4' : null;
 
 const countryCode = getCountryCode(driver.Driver.nationality);
 
