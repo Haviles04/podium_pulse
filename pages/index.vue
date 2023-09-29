@@ -9,7 +9,7 @@
       </h2>
     </div>
     <News />
-    <div class="mt-10 bg-secondary p-2">
+    <div class="m-10 bg-secondary py-10">
       <h2
         class="text-bold m-auto mt-10 w-fit border-b-2 border-primary text-center font-racing text-4xl italic md:text-7xl"
       >
