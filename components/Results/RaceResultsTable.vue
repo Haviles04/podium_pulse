@@ -4,7 +4,7 @@
       <thead>
         <tr class="[&>*]:py-4">
           <th v-if="sessionType !== 'qualifying'">Position</th>
-          <th class="hidden md:table-cell">Grid</th>
+          <th class="md:table-cell">Grid</th>
           <th class="hidden md:table-cell">Number</th>
           <th>Name</th>
           <th class="hidden md:table-cell">Team</th>

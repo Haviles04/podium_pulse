@@ -1,7 +1,7 @@
 <template>
   <tr class="[&>*]:py-4">
     <td v-if="!showQuali">{{ driver.position }}</td>
-    <td class="hidden md:table-cell">{{ driver.grid || driver.position }}</td>
+    <td>{{ driver.grid || driver.position }}</td>
     <td class="hidden md:table-cell">
       {{ driver.number }}
     </td>
