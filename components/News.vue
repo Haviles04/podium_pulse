@@ -4,16 +4,18 @@
   >
     <article
       v-for="(article, i) in news"
-      :class="`text-centerflex flex-col overflow-hidden rounded-xl border-2 border-border bg-card ${
+      :class="`flex  cursor-pointer flex-col overflow-hidden rounded-xl border-2 border-border bg-card text-center ${
         i === 0 ? 'md:col-span-2' : null
       }`"
     >
-      <img :class="`h-3/6 w-full object-cover ${i === 0 ? 'md:h-3/4' : null}`" :src="article.urlToImage" />
-      <h3 class="border-b-2 border-border p-2 text-center text-xl">
-        <a :href="article.url" target="_blank" class="flex flex-col justify-between">{{ article.title }}</a>
-      </h3>
+      <a :href="article.link" target="_blank" class="flex flex-col justify-between">
+        <img :class="`h-3/6 w-full object-cover ${i === 0 ? 'md:h-3/4' : null}`" :src="article.media" />
+        <h3 class="border-b-2 border-border p-2 text-center text-xl">
+          {{ article.title }}
+        </h3>
 
-      <p class="p-2 text-center">{{ article.description }}</p>
+        <p class="p-2 text-center">{{ article.summary }}</p></a
+      >
     </article>
   </section>
 </template>
