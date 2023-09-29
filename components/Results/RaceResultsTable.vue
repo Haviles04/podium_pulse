@@ -30,7 +30,7 @@
         />
       </tbody>
     </table>
-    <p class="py-2"><span class="text-2xl text-fastest"> __ </span>Denotes fastest lap of race</p>
+    <p class="py-2 text-center"><span class="text-2xl text-fastest"> __ </span>Denotes fastest lap of race</p>
   </div>
 </template>
 
