@@ -4,7 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html,
+body,
+#__nuxt,
+#__layout {
   background-color: #32343d;
   color: #ffffff;
   height: 100%;

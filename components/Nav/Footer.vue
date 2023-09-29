@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-100 m-auto mt-10 bg-secondary p-8">
+  <footer class="mt-10 w-full bg-secondary p-8">
     <p class="mb-4 text-center">Podium Pulse</p>
 
     <ul class="m-auto flex max-w-[600px] justify-between text-primary">
