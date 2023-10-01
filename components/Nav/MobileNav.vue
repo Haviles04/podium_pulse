@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="px-7" @click="showLinks = !showLinks">
+    <button class="flex px-7" @click="showLinks = !showLinks">
       <i class="material-icons">menu</i>
     </button>
     <div
