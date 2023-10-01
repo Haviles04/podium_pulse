@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button class="px-7 py-4" @click="showLinks = !showLinks">Menu</button>
+    <button class="px-7" @click="showLinks = !showLinks">
+      <i class="material-icons">menu</i>
+    </button>
     <div
       v-if="showLinks"
       class="absolute left-0 top-14 mr-10 w-screen bg-card text-end [&>ul>li]:border-b-2 [&>ul>li]:border-border [&>ul>li]:p-4"
