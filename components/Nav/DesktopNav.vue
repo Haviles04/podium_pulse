@@ -1,16 +1,16 @@
 <template>
-  <ul class="[&>*]:px-8 [&>*]:py-4">
+  <ul>
     <li class="h-full hover:bg-light hover:text-background">
-      <nuxt-link to="/standings">Standings</nuxt-link>
+      <nuxt-link to="/standings" class="block h-full w-full px-8 py-4" >Standings</nuxt-link>
     </li>
     <li class="h-full hover:bg-light hover:text-background">
-      <nuxt-link to="/schedule">Schedule</nuxt-link>
+      <nuxt-link to="/schedule" class="block h-full w-full px-8 py-4">Schedule</nuxt-link>
     </li>
     <li
       class="group/seasons h-full hover:bg-light hover:text-background"
       @mouseenter="setSessionType('seasons')"
     >
-      <nuxt-link to="/results"> Seasons </nuxt-link>
+      <nuxt-link to="/results" class="block h-full w-full px-8 py-4"> Seasons </nuxt-link>
       <nav-drop-down
         v-if="listTypes === 'seasons'"
         :listData="seasons"
@@ -22,7 +22,7 @@
       class="group/drivers h-full hover:bg-light hover:text-background"
       @mouseenter="setSessionType('drivers')"
     >
-      <nuxt-link to="/drivers">Drivers</nuxt-link>
+      <nuxt-link to="/drivers" class="block h-full w-full px-8 py-4">Drivers</nuxt-link>
       <nav-drop-down
         v-if="listTypes === 'drivers'"
         :listData="drivers"
