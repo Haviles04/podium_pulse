@@ -2,8 +2,8 @@
   <div>
     <h4>Results</h4>
     <ul>
-      <label v-for="driver in data">
-        <li class="flex justify-between px-6 py-2">
+      <label v-for="driver in data" :for="driver.code">
+        <li :name="driver.code" class="flex justify-between px-6 py-2">
           <span>{{
             driver.position + ' : ' + driver.Driver.givenName + ' ' + driver.Driver.familyName
           }}</span>
@@ -12,8 +12,9 @@
       </label>
     </ul>
     <NuxtLink
-      :to="`results/${season}/${round}/race`"
+      :to="`/results/${season}/${round}/race`"
       class="flex items-center justify-center py-2 text-primary hover:text-fastest"
+      :replace="true"
       >Full Standings <i class="material-icons">chevron_right</i>
     </NuxtLink>
   </div>
