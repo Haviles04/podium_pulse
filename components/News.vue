@@ -9,7 +9,11 @@
       }`"
     >
       <a :href="article.link" target="_blank" class="flex flex-col justify-between">
-        <img :class="`h-3/6 w-full object-cover ${i === 0 ? 'md:h-3/4' : null}`" :src="article.media" />
+        <img
+          :class="`h-3/6 w-full object-cover ${i === 0 ? 'md:h-3/4' : null}`"
+          :src="article.media"
+          alt="News Article Image"
+        />
         <h3 class="border-b-2 border-border p-2 text-center text-xl">
           {{ article.title }}
         </h3>
