@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       short_name: 'Podium Pulse',
       description: 'Formula 1 information app',
       start_url: 'https://podiumpulse.netlify.app/',
+      id: '/',
       icons: [
         {
           src: '/icons/race-72.png',
