@@ -10,7 +10,7 @@
       class="group/seasons h-full hover:bg-light hover:text-background"
       @mouseenter="setSessionType('seasons')"
     >
-      <nuxt-link to="/results" class="block h-full w-full px-8 py-4"> Seasons </nuxt-link>
+      <nuxt-link to="/results" class="block h-full w-full px-8 py-4"> Results </nuxt-link>
       <nav-drop-down
         v-if="listTypes === 'seasons'"
         :listData="seasons"

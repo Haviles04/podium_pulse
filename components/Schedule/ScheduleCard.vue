@@ -11,5 +11,5 @@
 
 <script setup>
 const { race } = defineProps(['race']);
-const futureRace = new Date(race.date) > new Date();
+const futureRace = new Date(race.date + " " + race.time) > new Date();
 </script>
