@@ -13,6 +13,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18.17.1",
+    "@vite-pwa/nuxt": "^0.1.1",
     "eslint": "^8.46.0",
     "eslint-plugin-vue": "^9.16.1",
     "nuxt": "^3.6.5",
