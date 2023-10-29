@@ -7,6 +7,7 @@ export default defineNuxtConfig({
       name: 'Podium Pulse',
       short_name: 'Podium Pulse',
       description: 'Formula 1 information app',
+      display: 'fullscreen',
       start_url: 'https://podiumpulse.netlify.app/',
       background_color: '#32343d',
       theme_color: '#32343d',
