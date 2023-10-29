@@ -1,4 +1,5 @@
 <template>
+  <VitePwaManifest />
   <div class="flex h-full w-full flex-col justify-between">
     <nav class="border-b-4 border-primary bg-secondary">
       <NuxtLoadingIndicator />

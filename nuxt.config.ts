@@ -2,6 +2,27 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@vite-pwa/nuxt', '@nuxtjs/tailwindcss'],
+  pwa: {
+    manifest: {
+      name: 'Podium Pulse',
+      short_name: 'PP',
+      description: 'Formula 1 information app',
+      icons: [
+        {
+          src: '/race.png',
+          sizes: '144x144',
+          type: 'image/png',
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: '/',
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module',
+    },
+  },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
   },
