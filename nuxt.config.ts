@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   pwa: {
     manifest: {
       name: 'Podium Pulse',
-      short_name: 'PP',
+      short_name: 'Podium Pulse',
       description: 'Formula 1 information app',
       icons: [
         {
