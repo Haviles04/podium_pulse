@@ -86,7 +86,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Podium Pulse | F1',
-      meta: [{ name: 'description', content: 'Everything about formula 1' }],
+      meta: [
+        { name: 'description', content: 'Everything about formula 1' },
+        { name: 'theme-color', content: '#32343d,' },
+      ],
       link: [
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
         { rel: 'icon', type: 'image/x-icon', href: '/race.png' },
