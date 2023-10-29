@@ -8,6 +8,8 @@ export default defineNuxtConfig({
       short_name: 'Podium Pulse',
       description: 'Formula 1 information app',
       start_url: 'https://podiumpulse.netlify.app/',
+      background_color: '#32343d',
+      theme_color: '#32343d',
       id: '/',
       icons: [
         {
@@ -34,6 +36,7 @@ export default defineNuxtConfig({
           src: '/icons/race-144.png',
           sizes: '144x144',
           type: 'image/png',
+          purpose: 'maskable',
         },
         {
           src: '/icons/race-152.png',
