@@ -6,7 +6,7 @@
     <nuxt-link :to="link"
       ><h2 class="text-2xl">{{ driver.givenName + ' ' + driver.familyName }}</h2></nuxt-link
     >
-    <img :src="imgSource" />
+    <img :src="imgSource" loading="lazy" />
   </div>
 </template>
 
