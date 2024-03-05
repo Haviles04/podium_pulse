@@ -1,10 +1,10 @@
 <template>
   <section
-    class="m-auto mt-20 grid max-w-[1000px] grid-cols-1 gap-10 rounded-xl bg-secondary md:grid-cols-2 md:p-8"
+    class="m-auto mt-20 grid max-w-[1000px] grid-cols-1 gap-10 rounded-xl bg-secondary md:grid-cols-2 md:p-8 items-center"
   >
     <article
       v-for="(article, i) in news"
-      :class="`flex  cursor-pointer flex-col overflow-hidden rounded-xl border-2 border-border bg-card text-center ${
+      :class="`flex cursor-pointer flex-col justify-evenly overflow-hidden rounded-xl h-full border-2 border-border bg-card text-center ${
         i === 0 ? 'md:col-span-2' : null
       }`"
     >
@@ -14,11 +14,11 @@
           :src="article.media"
           alt="News Article Image"
         />
-        <h3 class="border-b-2 border-border p-2 text-center text-xl">
+        <h3 class="border-b-2 border-border text-center text-xl">
           {{ article.title }}
         </h3>
 
-        <p class="p-2 text-center">{{ article.summary }}</p></a
+        <p class="p-4 text-center">{{ article.excerpt }}</p></a
       >
     </article>
   </section>
@@ -26,4 +26,5 @@
 
 <script setup>
 const { news } = await useNews();
+console.log(news);
 </script>
