@@ -21,7 +21,6 @@ export const useStandings = (slug) => {
   };
 
   watchEffect(() => {
-    standingsData.value = null;
     fetchData();
   });
 
