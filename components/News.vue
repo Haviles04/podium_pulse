@@ -26,5 +26,4 @@
 
 <script setup>
 const { news } = await useNews();
-console.log(news);
 </script>
