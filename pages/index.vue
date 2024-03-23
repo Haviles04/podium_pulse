@@ -25,10 +25,11 @@
 
 <script setup>
 const lastRace = await fetchSessionInfo('https://ergast.com/api/f1/current/last/results.json');
+
 </script>
 
 <style scoped>
 .hero {
-  background: url('/f1.jpg') no-repeat center fixed;
+  background: url('/f1.webp') no-repeat center fixed;
 }
 </style>
