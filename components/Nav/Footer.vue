@@ -18,7 +18,7 @@
     </ul>
     <p class="mt-4 text-center">
       Built by
-      <a href="https://henryaviles.vercel.app" target="_blank" class="text-primary">Henry Aviles</a>
+      <a href="https://henryaviles.dev" target="_blank" class="text-primary">Henry Aviles</a>
     </p>
   </footer>
 </template>
