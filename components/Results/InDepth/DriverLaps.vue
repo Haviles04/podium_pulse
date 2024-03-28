@@ -12,7 +12,13 @@
     </thead>
     <tbody>
       <tr
-        v-for="{ lap_number, duration_sector_1, duration_sector_2, duration_sector_3, lap_duration } in data"
+        v-for="{
+          lap_number,
+          duration_sector_1,
+          duration_sector_2,
+          duration_sector_3,
+          lap_duration,
+        } in props.driver"
       >
         <td>
           {{ lap_number }}
@@ -35,9 +41,5 @@
 </template>
 
 <script setup>
-const props = defineProps(['driverNumber', 'sessionId']);
-
-const { data } = await useFetch(
-  `https://api.openf1.org/v1/laps?session_key=${props.sessionId}&driver_number=${props.driverNumber}`,
-);
+const props = defineProps(['driver']);
 </script>
