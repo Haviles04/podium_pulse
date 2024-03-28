@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 className="text-primary text-3xl mt-4">Session Data</h2>
+    <h2 className="text-primary text-2xl mt-4">Session Data</h2>
     <label for="sessions" class="block"> Session</label>
     <form>
       <select
