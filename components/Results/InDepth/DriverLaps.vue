@@ -1,6 +1,7 @@
 <template>
+  <h3 class="mt-4 text-xl">Laps</h3>
   <table
-    class="text-md text-center-xl mt-4 w-full table-auto divide-y divide-primary rounded rounded-xl bg-card"
+    class="text-md text-center-xl min-h-[500px] w-full table-auto divide-y divide-primary rounded rounded-xl bg-card"
   >
     <thead>
       <th>Lap</th>

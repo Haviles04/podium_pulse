@@ -2,22 +2,30 @@
   <section>
     <h2 className="text-primary text-3xl mt-4">Session Data</h2>
     <label for="sessions" class="block"> Session</label>
-    <select name="sessions" v-model="selectedSession" class="mt-2 rounded bg-background text-xl text-primary">
-      <option disabled selected>Select a session</option>
-      <option v-for="session in sessions">{{ session.session_name }}</option>
-    </select>
+    <form>
+      <select
+        id="sessions"
+        name="sessions"
+        v-model="selectedSession"
+        class="mt-2 rounded bg-background text-xl text-primary"
+      >
+        <option disabled selected>Select a session</option>
+        <option v-for="session in sessions">{{ session.session_name }}</option>
+      </select>
 
-    <label for="drivers" class="block">Driver</label>
-    <select
-      name="drivers"
-      v-model="selectedDriverNumber"
-      class="mt-2 rounded bg-background text-xl text-primary"
-    >
-      <option disabled>Select a driver</option>
-      <option v-for="{ driver_number, full_name } in driverData" :value="driver_number">
-        {{ full_name }}
-      </option>
-    </select>
+      <label for="drivers" class="block">Driver</label>
+      <select
+        id="drivers"
+        name="drivers"
+        v-model="selectedDriverNumber"
+        class="mt-2 rounded bg-background text-xl text-primary"
+      >
+        <option disabled>Select a driver</option>
+        <option v-for="{ driver_number, full_name } in driverData" :value="driver_number">
+          {{ full_name }}
+        </option>
+      </select>
+    </form>
 
     <driver-laps
       v-if="selectedDriverNumber"
