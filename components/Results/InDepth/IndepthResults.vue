@@ -40,7 +40,6 @@
         <option value="laps">Laps</option>
         <template v-if="isRace">
           <option value="stints">Stints</option>
-          <option value="race_control">Race Control</option>
         </template>
       </select>
     </form>
@@ -101,7 +100,5 @@ const getDriverSessionData = async () => {
   selectedDriverData.value = await $fetch(
     `https://api.openf1.org/v1/${selectedData.value}?session_key=${selectedSession.value}&driver_number=${selectedDriver.value}`,
   );
-
-  console.log(selectedDriverData.value);
 };
 </script>
