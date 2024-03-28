@@ -34,11 +34,9 @@
 </template>
 
 <script setup>
-const props = defineProps(['driver', 'sessionId']);
+const props = defineProps(['driverNumber', 'sessionId']);
 
 const { data } = await useFetch(
-  `https://api.openf1.org/v1/laps?session_key=${props.sessionId}&driver_number=${props.driver.driver_number}`,
+  `https://api.openf1.org/v1/laps?session_key=${props.sessionId}&driver_number=${props.driverNumber}`,
 );
-
-console.log(data);
 </script>
