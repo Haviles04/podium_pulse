@@ -16,6 +16,7 @@
           </h1>
           <h2 class="mb-6 text-xl md:text-2xl">{{ data.Circuit.circuitName }}</h2>
           <race-results-table :key="data" :results="data" :sessionType="session || 'race'" />
+          <indepth-results v-if="meetingId" :meetingId="meetingId" />
         </div>
       </div>
     </section>
@@ -42,7 +43,6 @@ const { data, error } = await useFetch(`${apiEndpoint}/${slug}.json`, {
   },
 });
 
-
 if (error.value) {
   throw createError({
     statusCode: 404,
@@ -50,6 +50,8 @@ if (error.value) {
     fatal: true,
   });
 }
+
+const { meetingId } = await useMeetingId(data.value.Circuit?.Location?.country, data.value.season);
 
 useHead({
   title: 'Podium Pulse | Results',
