@@ -18,7 +18,7 @@
           duration_sector_2,
           duration_sector_3,
           lap_duration,
-        } in props.driver"
+        } in props.driverData"
       >
         <td>
           {{ lap_number }}
@@ -41,5 +41,5 @@
 </template>
 
 <script setup>
-const props = defineProps(['driver']);
+const props = defineProps(['driverData']);
 </script>

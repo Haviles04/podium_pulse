@@ -28,7 +28,7 @@
         </option>
       </select>
 
-      <!-- <label for="dataType" class="block">Data</label>
+      <label for="dataType" class="block">Data</label>
       <select
         id="dataType"
         name="dataType"
@@ -39,15 +39,21 @@
         <option disabled selected>Select data</option>
         <option value="laps">Laps</option>
         <template v-if="isRace">
-          <option value="pit">Pits</option>
-          <option value="radio">Radio</option>
+          <option value="stints">Stints</option>
+          <option value="race_control">Race Control</option>
         </template>
-      </select> -->
+      </select>
     </form>
 
     <driver-laps
-      v-if="selectedDriverData"
-      :driver="selectedDriverData"
+      v-if="selectedDriverData && selectedData === 'laps'"
+      :driverData="selectedDriverData"
+      :key="`${selectedSession} ${selectedDriver}`"
+    />
+
+    <driver-stints
+      v-if="selectedDriver && selectedData === 'stints'"
+      :driverData="selectedDriverData"
       :key="`${selectedSession} ${selectedDriver}`"
     />
   </section>
@@ -91,8 +97,11 @@ const handleDataChange = () => {
 };
 
 const getDriverSessionData = async () => {
+  selectedData.value = selectedData.value ?? 'laps';
   selectedDriverData.value = await $fetch(
-    `https://api.openf1.org/v1/laps?session_key=${selectedSession.value}&driver_number=${selectedDriver.value}`,
+    `https://api.openf1.org/v1/${selectedData.value}?session_key=${selectedSession.value}&driver_number=${selectedDriver.value}`,
   );
+
+  console.log(selectedDriverData.value);
 };
 </script>
