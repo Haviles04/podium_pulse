@@ -23,7 +23,7 @@
       v-if="selectedDriverNumber"
       :driverNumber="selectedDriverNumber"
       :sessionId="sessionId"
-      :key="selectedDriverNumber.driver_number + sessionId"
+      :key="`${selectedDriverNumber} ${sessionId}`"
     />
   </section>
 </template>
@@ -46,7 +46,15 @@ watch(
   sessionId,
   async () => {
     if (!sessionId.value) return;
-    const { data } = await useFetch(`https://api.openf1.org/v1/drivers?session_key=${sessionId.value}`);
+    const { data } = await useFetch(`https://api.openf1.org/v1/drivers?session_key=${sessionId.value}`, {
+      transform: (data) =>
+        data.reduce((acc, current) => {
+          if (!acc.some((driver) => driver.driver_number === current.driver_number)) {
+            acc.push(current);
+          }
+          return acc;
+        }, []),
+    });
     driverData.value = data.value;
   },
   { immediate: true },
