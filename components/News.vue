@@ -11,14 +11,14 @@
       <a :href="article.link" target="_blank" class="flex flex-col justify-between">
         <img
           :class="`h-3/6 w-full object-cover ${i === 0 ? 'md:h-3/4' : null}`"
-          :src="article.media"
+          :src="article.images[0].url"
           alt="News Article Image"
         />
-        <h3 class="border-b-2 border-border text-center text-xl">
-          {{ article.title }}
+        <h3 class="border-b-2 border-border text-center text-xl p-2">
+          {{ article.headline }}
         </h3>
 
-        <p class="p-4 text-center">{{ article.excerpt }}</p></a
+        <p class="p-4 text-center">{{ article.description }}</p></a
       >
     </article>
   </section>

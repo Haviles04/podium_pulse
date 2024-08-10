@@ -1,17 +1,13 @@
 export const useNews = async () => {
   const config = useRuntimeConfig();
-  const yesterday = new Date(Date.now() - 86400000).toLocaleDateString();
+  const { newsApiKey } = config.public;
 
-  const { data: news } = await useFetch(
-    `https://api.newscatcherapi.com/v2/search?q=formula 1 f1&from=2 days ago&lang=en&sources=formula1.com,autosport.com, espn.com, bbc.com,skysports.com`,
-    {
-      headers: {
-        'x-api-key': config.public.newsApiKey,
-      },
-      transform: (data) => {
-        return data.articles.filter(({ title }) => title !== '[Removed]').slice(0, 5);
-      },
+  const { data: news } = await useFetch(`https://f1-motorsport-data.p.rapidapi.com/news`, {
+    headers: {
+      'x-rapidapi-key': newsApiKey,
     },
-  );
-  return { news };
+    transform: (data) => data.slice(0, 5),
+  });
+
+  return { news, key: newsApiKey };
 };
