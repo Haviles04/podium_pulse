@@ -20,9 +20,6 @@ A Formula 1 Informational web application displaying schedule, racetimes, race r
 Formula 1 Data provided by the Ergast API
 [Ergast](https://ergast.com/mrd/)
 
-News Articles provided by newscatcher API
-[newscatcher](https://www.newscatcherapi.com/)
-
 ## Live Site
 
 [Podium Pulse](https://podiumpulse.netlify.app)
