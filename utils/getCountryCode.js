@@ -1,70 +1,50 @@
 export const getCountryCode = (nationality) => {
-  switch (nationality) {
-    case "American":
-      return "US";
-      break;
-    case "Dutch":
-      return "BE";
-      break;
-    case "Mexican":
-      return "MX";
-      break;
-    case "Monegasque":
-      return "MC";
-      break;
-    case "British":
-      return "GB";
-      break;
-    case "Spanish":
-      return "ES";
-      break;
-    case "French":
-      return "FR";
-      break;
-    case "Canadian":
-      return "CA";
-      break;
-    case "Japanese":
-      return "JP";
-      break;
-    case "Chinese":
-      return "CN";
-      break;
-    case "Thai":
-      return "TH";
-      break;
-    case "Danish":
-      return "DK";
-      break;
-    case "Australian":
-      return "AU";
-      break;
-    case "German":
-      return "DE";
-      break;
-    case "Finnish":
-      return "FI";
-      break;
-    case "Brazilian":
-      return "BR";
-      break;
-    case "Belgian":
-      return "BE";
-      break;
-    case "New Zealander":
-      return "NZ";
-      break;
-    case "Swedish":
-      return "CH";
-      break;
-    case "Russian":
-      return "RU";
-      break;
-    case "Indonesian":
-      return "ID";
-      break;
-    case "Venezuelan":
-      return "VE";
-      break;
+  switch (nationality.trim()) {
+    case 'American':
+      return 'US';
+    case 'Dutch':
+      return 'BE';
+    case 'Mexican':
+      return 'MX';
+    case 'Monegasque':
+      return 'MC';
+    case 'British':
+      return 'GB';
+    case 'Spanish':
+      return 'ES';
+    case 'French':
+      return 'FR';
+    case 'Canadian':
+      return 'CA';
+    case 'Japanese':
+      return 'JP';
+    case 'Chinese':
+      return 'CN';
+    case 'Thai':
+      return 'TH';
+    case 'Danish':
+      return 'DK';
+    case 'Australian':
+      return 'AU';
+    case 'German':
+      return 'DE';
+    case 'Finnish':
+      return 'FI';
+    case 'Brazilian':
+      return 'BR';
+    case 'Belgian':
+      return 'BE';
+    case 'New Zealander':
+      return 'NZ';
+    case 'Swedish':
+      return 'CH';
+    case 'Russian':
+      return 'RU';
+    case 'Indonesian':
+      return 'ID';
+    case 'Venezuelan':
+      return 'VE';
+    case 'Argentinian':
+      return 'AR';
   }
 };
