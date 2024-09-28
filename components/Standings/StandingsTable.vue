@@ -10,8 +10,8 @@
         </tr>
       </thead>
       <tbody v-if="data">
-        <driver-standings-row v-if="data[0].Driver" v-for="driver in data" :driver="driver" />
-        <constructor-standings-row v-else-if="data[0].Constructor" v-for="team in data" :team="team" />
+        <driver-standings-row v-if="data[0].Driver" v-for="driver in data" :driver="driver" :key="driver.id"/>
+        <constructor-standings-row v-else-if="data[0].Constructor" v-for="team in data" :team="team" :key="team.id" />
       </tbody>
       <tbody v-else-if="error">
         <td colspan="3" class="p-6">Error loading Data</td>

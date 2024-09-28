@@ -20,7 +20,7 @@
 <script setup>
 const wdc = ref(true);
 const slug = computed(() => {
-  return wdc.value === true ? 'Driver' : 'Constructor';
+  return wdc.value === true ? 'driver' : 'constructor';
 });
 
 const { standingsData, loading, error } = useStandings(slug);

@@ -18,6 +18,5 @@
 <script setup>
 const { driver } = defineProps(['driver']);
 const { position, Driver, points } = driver;
-
 const countryCode = getCountryCode(Driver.nationality);
 </script>
