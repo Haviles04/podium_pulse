@@ -2,6 +2,7 @@
   <main>
     <section class="m-auto mt-10 max-w-[1200px] rounded-xl bg-secondary pb-10 text-center md:px-10">
       <result-select />
+      <div v-if="!(data.length || data.season)"><h2>This season hasn't started yet</h2></div>
       <div v-if="!data"><h2>No data available yet</h2></div>
       <div v-else>
         <div v-if="showOnlySeason" class="grid md:grid-cols-2 gap-10 justify-center align-center max-w-[800px] m-auto">
@@ -11,9 +12,10 @@
         </div>
         </div>
         <div v-else>
-          <h1 class="mt-10 font-racing text-3xl md:text-6xl">
+          <h1 v-if="showLatest">Latest Results</h1>
+          <h2 class="font-racing text-3xl md:text-6xl">
             {{ data.raceName }}
-          </h1>
+          </h2>
           <h2 class="mb-6 text-xl md:text-2xl">{{ data.Circuit.circuitName }}</h2>
           <race-results-table :key="data" :results="data" :sessionType="session || 'race'" />
           <indepth-results v-if="meetingId" :meetingId="meetingId" />
@@ -42,6 +44,8 @@ const { data, error } = await useFetch(`${apiEndpoint}/${slug}.json`, {
     return showOnlySeason ? data.MRData.RaceTable.Races.filter(({date, time}) => new Date(date + " " + time) < new Date()) : data.MRData.RaceTable.Races[0];
   },
 });
+
+console.log(data.value);
 
 if (error.value) {
   throw createError({
