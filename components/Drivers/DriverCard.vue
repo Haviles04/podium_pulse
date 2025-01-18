@@ -6,12 +6,13 @@
     <nuxt-link :to="link"
       ><h2 class="text-2xl">{{ driver.givenName + ' ' + driver.familyName }}</h2></nuxt-link
     >
-    <img :src="imgSource" loading="lazy" />
+    <img v-if="imageExists" :src="imgSource" loading="lazy" @error="imageExists=false" />
   </div>
 </template>
 
 <script setup>
 const router = useRouter();
+const imageExists = ref(true);
 const { driver } = defineProps(['driver']);
 const imgSource = `/images/drivers/${driver.familyName.toLowerCase()}.png`;
 const link = `/drivers/${driver.driverId}`;
