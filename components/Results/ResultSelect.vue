@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="loading"
-    class="absolute left-0 flex h-[calc(100vh-60px)] w-full items-center justify-center bg-background opacity-50"
+    class="fixed left-0 top-16 flex h-full w-full items-center justify-center bg-background opacity-50"
   >
     <Loader />
   </div>
