@@ -31,7 +31,7 @@ const { season, round, session } = route.params;
 const showOnlySeason = season && !round && !session;
 const showLatest = !season && !round && !session;
 
-const apiEndpoint = 'https://ergast.com/api/f1';
+const apiEndpoint = 'https://api.jolpi.ca/ergast/f1';
 const sessionType = session === 'race' ? 'results' : session;
 const slug = showOnlySeason
   ? season

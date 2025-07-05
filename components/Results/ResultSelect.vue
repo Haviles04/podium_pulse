@@ -69,7 +69,7 @@ const selectClass =
   'no-scrollbar m-auto block w-full rounded-xl border-2 border-border bg-background bg-card p-4 text-primary md:m-1 md:w-fit';
 
 // SSR
-const { data } = await useFetch(`https://ergast.com/api/f1/${selectedSeason.value}.json`, {
+const { data } = await useFetch(`https://api.jolpi.ca/ergast/f1/${selectedSeason.value}.json`, {
   transform: (data) => {
     return data.MRData.RaceTable.Races.filter(({ date }) => Date.now() >= Date.parse(date)).map(
       ({ raceName, round, Sprint }) => ({ raceName, round, Sprint }),

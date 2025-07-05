@@ -6,7 +6,7 @@
         >FP1
         <li>: {{ getDateAndTime(race.FirstPractice.date, race.FirstPractice.time) }}</li></label
       >
-      <label
+      <label v-if="race.SecondPractice"
         >FP2
         <li>: {{ getDateAndTime(race.SecondPractice.date, race.SecondPractice.time) }}</li></label
       >
@@ -17,6 +17,10 @@
       <label v-if="race.Sprint"
         >Sprint
         <li>: {{ getDateAndTime(race.Sprint.date, race.Sprint.time) }}</li></label
+      >
+      <label v-if="race.SprintQualifying"
+      >Sprint Qualifiying
+        <li>: {{ getDateAndTime(race.SprintQualifying.date, race.SprintQualifying.time) }}</li></label
       >
       <label>
         Qualifying:

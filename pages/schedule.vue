@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-const { data, error } = await useFetch(`https://ergast.com/api/f1/current.json`, {
+const { data, error } = await useFetch(`https://api.jolpi.ca/ergast/f1/current.json`, {
   transform: (data) => {
     return data.MRData.RaceTable.Races;
   },
