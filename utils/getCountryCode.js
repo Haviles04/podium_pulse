@@ -44,7 +44,7 @@ export const getCountryCode = (nationality) => {
       return 'ID';
     case 'Venezuelan':
       return 'VE';
-    case 'Argentinian':
+    case 'Argentine':
       return 'AR';
   }
 };

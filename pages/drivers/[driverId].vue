@@ -40,7 +40,7 @@
 const { driverId } = useRoute().params;
 const imageExist = ref(true);
 
-const { data: driver, error } = await useFetch(`https://ergast.com/api/f1/drivers/${driverId}.json`, {
+const { data: driver, error } = await useFetch(`https://api.jolpi.ca/ergast/f1/drivers/${driverId}.json`, {
   transform: (data) => {
     return data.MRData.DriverTable.Drivers[0];
   },
@@ -55,7 +55,7 @@ if (error.value) {
 const countryCode = getCountryCode(driver.value.nationality);
 const imgSource = `/images/drivers/${driver.value.familyName.toLowerCase()}.png`;
 
-const { data: standings } = await useFetch(`https://ergast.com/api/f1/current/driverStandings.json`, {
+const { data: standings } = await useFetch(`https://api.jolpi.ca/ergast/f1/current/driverStandings.json`, {
   transform: (data) => {
     return data.MRData.StandingsTable.StandingsLists[0].DriverStandings.filter(
       ({ Driver }) => driverId === Driver.driverId,
